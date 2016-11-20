@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+<head>
+    <title>Order visualization App</title>
+    <!-- Bootstrap CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="container">
+  
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#">Order visualization App </a> 
+	  </br>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+	  <div  ui-view="Visualview"> </div>
+	   <div  ui-view="projview"> </div>
+    </div>
+	<div class="col-md-6">
+	   <div ui-view="view2">
+	  </div>  
+    </div>
+  </div>
+  
+  <!-- Angular -->
+  <script src="js/angular.min.js"></script>
+  <!-- UI-Router -->
+  <script src="js/angular-ui-router.js"></script>
+  <script src="js/d3.v3.min.js" charset="utf-8"></script>
+  <script src="js/Chart.js"></script>
+  <script src="js/angular-chart.js"></script>
+  <script src="controllers.js"></script>
+  <script src="services.js"></script>
+  <link rel="stylesheet" href="stylesheets/angular-chart.css">
+	
+  
+  <!-- App Script -->
+  <script>
+    angular.module('myapp', ['ui.router', 'myapp.controllers', 'myapp.services'])
+    .config(function($stateProvider, $urlRouterProvider){
+      
+      
+      $urlRouterProvider.otherwise("/Visualapp")
+      
+      $stateProvider
+     	.state('Visualapp', {
+            url: "/Visualapp",
+			views: {
+                
+				"Visualview": {
+                    
+					templateUrl: "templates/order_visual.html",
+					 controller: 'VisualappCtrl'
+					 
+					
+                },
+				"projview": {
+                    
+					templateUrl: "templates/order_proj.html",
+					 controller: 'VisualappCtrl'
+					 
+					
+                }
+				,
+				"view2": {
+                    
+					templateUrl: "templates/Visualapp_placeholder.html"
+	           }
+			 }
+	        
+        })
+		
+		.state('Visualapp.salesbyorder', {
+            url: "/salesbyorder",
+			views: {
+                "view21": {
+                    
+					templateUrl: "templates/visual_sales_byorderid.html",
+					 controller: 'VisualByOrderIdCtrl'
+					 
+					
+                }
+			 }
+			
+            
+        })
+		.state('Visualapp.salesbycustomersegment', {
+            url: "/salesbycustomersegment",
+			views: {
+                "view21": {
+                    
+					templateUrl: "templates/visual_sales_bycustomersegment.html",
+					 controller: 'VisualByOrderIdCtrl'
+	
+                }
+			 }
+			
+            
+        })
+		.state('Visualapp.salesprodbymonth', {
+            url: "/salesprodbymonth",
+			views: {
+                
+				"view21": {
+                    
+					templateUrl: "templates/visual_sales_prod_by_month_list.html",
+					 controller: 'VisualSalesbyMonthCtrl'
+					 
+					
+                }
+			 }
+			
+            
+        })
+		.state('Visualapp.salesprodbymonth.category', {
+            url: "/:category",
+			views: {
+                "view22": {
+                    
+					templateUrl: "templates/visual_sales_prod_by_month.html",
+					 controller: 'VisualSalesbyMonthDetailCtrl'
+					 
+					
+                }
+				
+			 }
+			
+            
+        })
+		
+		.state('Visualapp.salesbyproductcategory', {
+            url: "/salesbyproductcategory",
+			views: {
+                "view21": {
+                    
+					templateUrl: "templates/visual_sales_byproductcategory.html",
+					 controller: 'VisualByOrderIdCtrl'
+					 
+					
+                }
+			 }
+			
+            
+        })
+		
+		.state('Visualapp.salesbycustomername', {
+            url: "/salesbycustomername",
+			views: {
+                "view21": {
+                    
+					templateUrl: "templates/visual_sales_bycustomername.html",
+					 controller: 'VisualByOrderIdCtrl'
+					 
+					
+                }
+			 }
+			
+            
+        })
+	    
+    });
+	
+	
+	
+
+  </script>
+
+</body>
+
+</html>

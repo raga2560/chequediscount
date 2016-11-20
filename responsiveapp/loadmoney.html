@@ -1,0 +1,40 @@
+
+
+
+<div class="panel panel-default">
+                        <div class="panel-heading">
+                            Load money for users created
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+								
+
+						<div class="form-group">
+								<h3 ng-hide="owners.length > 0"> No users created </h3>
+								<ul>
+  <li ng-repeat="list in owners" ng-show="owners.length > 0">
+  
+ 
+	
+                                            <label>For user {{list.record.name}}</label>
+											<p>
+											Load money to testnet address {{list.record.testnet.address}} from website http://faucet.haskoin.com
+											</p>
+											<p>Load money to mainet address {{list.record.mainnet.address}}  </p>
+                                            
+    
+	
+	
+  
+  </li>
+</ul>
+  
+</div>
+	 
+</div>
+</div>
+</div>	
+</div>
+	
+

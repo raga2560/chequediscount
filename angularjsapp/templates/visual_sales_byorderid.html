@@ -1,0 +1,58 @@
+
+<div class="panel panel-default">
+<div class="panel-heading">
+                            Sales by order id
+</div>
+
+
+
+
+
+<div class="panel-body">
+<div class="dataTable_wrapper">
+<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th class="success">Order Id</th>
+                                            <th class="success">Number of times placed</th>
+											<th class="success">Total sales</th>
+                                            
+                                        </tr>
+                                    </thead>
+			<tbody ng-repeat="item in salesbyorder | startFrom:currentPage*pageSize | limitTo:pageSize">
+ 
+ 
+                                
+                                  
+                                        <tr class="odd gradeX">
+                                            <td>{{item._id}}</td>
+											<td>{{item.num_products}}</td>
+											
+											<td>{{item.sales}}</td>
+                                            
+                                         
+                                        </tr>
+                                       
+
+	</tbody>	
+										
+
+  </table>
+                            </div>
+	<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+        Previous
+    </button>
+	{{currentPage+1}}/{{numberOfPages()}}
+    <button ng-disabled="currentPage >= salesbyorder.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+        Next
+    </button>
+
+   
+    
+  </div>
+  </div>
+  
+  
+  
+
+

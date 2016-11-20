@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+
+<head>
+  <title>Cheque discount management system</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="js/ngTable/ng-table.min.css">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Cheque discount system</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/signup">Register </a> </li>
+	  <li><a href="/login">Login </a> </li>
+	  <li><a href="/logout">Logout </a> </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container text-left">
+  <div class="row content">
+  <div class="collapse navbar-collapse" id="myNavbar">
+        <div  ui-view="mainindex">
+		</div>
+      
+      <ul class="nav navbar-nav navbar-right">
+      
+		<li><a ui-sref="chequediscounter">Discounter</a></li>
+		<li><a ui-sref="chequeagent">Agent </a></li>
+		<li><a ui-sref="chequeissuer">Cheque issuer </a></li>
+		<li><a ui-sref="chequereceiver">Cheque receiver </a></li>
+	  
+      </ul>
+    </div>
+    <!-- div class="col-sm-2 sidenav">
+      
+	  <H3> Govt </H3>
+	  <p><a ui-sref="govtpolicyentry">Policy create </a></p>
+	  <H3> Bank </H3>
+	  <p><a ui-sref="supportgroupentry">Scheme create </a></p>
+	  <H3> End user </H3>
+	  <p><a ui-sref="enduserentry"> Account create </a></p>
+	  
+		  <p><a ui-sref="enduserapply"> Apply for policies and schemes </a></p>
+		  <p><a ui-sref="endusernotification"> Notification of policies and schemes </a></p>
+	   <H3> Correspondent </H3>
+	  <p><a ui-sref="enduserentry"> Enduser account create </a></p>
+	  
+		  <p><a ui-sref="enduserapply"> Apply for enduser </a></p>
+		  <p><a ui-sref="endusernotification"> View endusers notifications  </a></p>
+      
+    </div -->
+    <div class="col-sm-12 text-left">
+  
+  <div class="navbar">
+    <div class="navbar-inner">
+	<div  ui-view="mainbutton">
+		</div>
+      
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-12">
+		<div class="well" ui-view="view3">
+		</div>
+  </div>
+  
+	
+  </div>         
+  </div>
+    
+  </div>
+</div>
+
+  <!-- Angular -->
+  <script src="angular.min.js"></script>
+  <!-- UI-Router -->
+  <script src="angular-ui-router.js"></script>
+  <script src="js/d3.v3.min.js" charset="utf-8"></script>
+  <script src="js/Chart.js"></script>
+  <script src="js/ngTable/ng-table.min.js"></script>
+  <script src="js/angular-chart.js"></script>
+  
+    <script src="controllers1.js"></script>
+	<script src="controllers2.js"></script>
+	<script src="controllers3.js"></script>
+    <script src="services.js"></script>
+	
+  
+  <!-- App Script -->
+  <script>
+    angular.module('myapp', ['ui.router','ngTable', 'myapp.controllers1', 'myapp.controllers2','myapp.controllers3', 'myapp.services'])
+	    .config(function($stateProvider, $urlRouterProvider){
+     
+      // For any unmatched url, send to /route1
+      $urlRouterProvider.otherwise("/chequeagent")
+      
+      $stateProvider
+          
+		  
+        
+        .state('loginroute', {
+            url: "/loginroute",
+			views: {
+                "view1": {
+                    
+					templateUrl: "loginroute.html",
+					 controller: 'LoginCtrl'
+					 
+					
+                }
+				,
+				"view2": {
+                    
+					templateUrl: "loginlisting.html",
+					 controller: 'LoginCtrl'
+		 
+					 
+					
+                }
+            }
+			
+            
+        })
+		
+		
+		
+		.state('chequediscounter', {
+              url: "/chequediscounter",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/d_discountlistmarket.html",
+					 controller: 'DiscounterCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/d_discountindex.html",
+					 controller: 'DiscounterCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/d_discountbutton.html",
+					 controller: 'DiscounterCtrl'
+                }
+				
+				
+			  }
+			})
+		
+		.state('chequediscounterlist', {
+              url: "/chequediscounterlist",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/d_discountlistmarket.html",
+					 controller: 'DiscounterCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/d_discountindex.html",
+					 controller: 'DiscounterCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/d_discountbutton.html",
+					 controller: 'DiscounterCtrl'
+                }
+				
+				
+			  }
+			})
+		
+		.state('chequediscounterenter', {
+              url: "/chequediscounterenter",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/d_discountlistenter.html",
+					 controller: 'DiscounterCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/d_discountindex.html",
+					 controller: 'DiscounterCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/d_discountbutton.html",
+					 controller: 'DiscounterCtrl'
+                }
+				
+				
+			  }
+			})
+		
+			.state('chequediscounterrate', {
+              url: "/chequediscounterrate",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/d_discountlistrate.html",
+					 controller: 'DiscounterCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/d_discountindex.html",
+					 controller: 'DiscounterCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/d_discountbutton.html",
+					 controller: 'DiscounterCtrl'
+                }
+				
+				
+			  }
+			})
+			.state('chequediscounterdocuments', {
+              url: "/chequediscounterdocuments",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/d_discountlistdocuments.html",
+					 controller: 'DiscounterCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/d_discountindex.html",
+					 controller: 'DiscounterCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/d_discountbutton.html",
+					 controller: 'DiscounterCtrl'
+                }
+				
+				
+			  }
+			})
+				
+		
+		
+		.state('chequeissuer', {
+              url: "/chequeissuer",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/i_issuerlistmarket.html",
+					 controller: 'IssuerCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/i_issuerindex.html",
+					 controller: 'IssuerCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/i_issuerbutton.html",
+					 controller: 'IssuerCtrl'
+                }
+				
+				
+			  }
+			})
+		.state('chequeissuerhistory', {
+              url: "/chequeissuerhistory",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/i_issuerhistory.html",
+					 controller: 'IssuerCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/i_issuerindex.html",
+					 controller: 'IssuerCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/i_issuerbutton.html",
+					 controller: 'IssuerCtrl'
+                }
+				
+				
+			  }
+			})
+		
+		
+		.state('chequereceiver', {
+              url: "/chequereceiver",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/r_receiverlistmarket.html",
+					 controller: 'ReceiverCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/r_receiverindex.html",
+					 controller: 'ReceiverCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/r_receiverbutton.html",
+					 controller: 'ReceiverCtrl'
+                }
+				
+				
+			  }
+			})
+		
+		.state('chequereceiverhistory', {
+              url: "/chequereceiverhistory",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/r_receiverhistory.html",
+					 controller: 'ReceiverCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/r_receiverindex.html",
+					 controller: 'ReceiverCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/r_receiverbutton.html",
+					 controller: 'ReceiverCtrl'
+                }
+				
+				
+			  }
+			})
+		
+		.state('chequeagent', {
+              url: "/chequeagent",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/a_agentlistmarket.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/a_agentindex.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/a_agentbutton.html",
+					 controller: 'AgentCtrl'
+                }
+				
+				
+			  }
+			})
+			
+			
+			.state('chequeagentreceiverhistory', {
+              url: "/chequeagentreceiverhistory",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/a_agentreceiverhistory.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/a_agentindex.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/a_agentbutton.html",
+					 controller: 'AgentCtrl'
+                }
+				
+				
+			  }
+			})
+		
+			.state('chequeagentissuerhistory', {
+              url: "/chequeagentissuerhistory",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/a_agentissuerhistory.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/a_agentindex.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/a_agentbutton.html",
+					 controller: 'AgentCtrl'
+                }
+				
+				
+			  }
+			})
+		
+		
+		.state('chequeagentreceivecreate', {
+              url: "/chequeagentreceivecreate",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/a_agentnewreceiver.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/a_agentindex.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/a_agentbutton.html",
+					 controller: 'AgentCtrl'
+                }
+				
+				
+			  }
+			})
+			
+			
+			.state('chequeagentacceptcheque', {
+              url: "/chequeagentacceptcheque",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/a_agentacceptcheque.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/a_agentindex.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/a_agentbutton.html",
+					 controller: 'AgentCtrl'
+                }
+				
+				
+			  }
+			})
+		
+		
+			
+			.state('chequeagentgivecash', {
+              url: "/chequeagentgivecash",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/a_agentgivecash.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/a_agentindex.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/a_agentbutton.html",
+					 controller: 'AgentCtrl'
+                }
+				
+				
+			  }
+			})
+		
+			
+		.state('chequeagentissuercreate', {
+              url: "/chequeagentissuercreate",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/a_agentnewissuer.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/a_agentindex.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/a_agentbutton.html",
+					 controller: 'AgentCtrl'
+                }
+				
+				
+			  }
+			})
+			
+			
+		.state('chequeagentreceivercreate', {
+              url: "/chequeagentreceivercreate",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/a_agentnewreceiver.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/a_agentindex.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/a_agentbutton.html",
+					 controller: 'AgentCtrl'
+                }
+				
+				
+			  }
+			})
+			
+		
+			
+		
+		 
+        	
+			
+		  
+        
+    });
+	
+	
+	
+
+  </script>
+
+</body>
+
+</html>

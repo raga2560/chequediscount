@@ -1,0 +1,15 @@
+<table ng-table="tableParams" class="table" show-filter="true">
+    <tr ng-repeat="record in $data">
+        <td title="'Issuer'" filter="{ name: 'text'}" sortable="'issuer'">
+            {{record.issuer}}</td>
+        <td title="'Amount'" filter="{ amount: 'number'}" sortable="'amount'">
+            {{record.amount}}</td>
+		<td title="'Reputation'" filter="{ reputation: 'number'}" sortable="'reputation'">
+            {{record.reputation}}</td>
+		<td title="'Discount'" filter="{ discount: 'number'}" sortable="'discount'">
+            {{record.discount}}</td>
+		
+		
+		<td > <button  class="btn btn-default" ng-click="listowners()">Enter rating </button></td>
+    </tr>
+</table>

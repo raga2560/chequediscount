@@ -1,0 +1,97 @@
+
+
+
+<div class="panel panel-primary">
+                        <div class="panel-heading">
+                            End user apply to schemes and policies
+						</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form role="form" >
+    <div class="row">
+                                <div class="col-lg-6">
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Select user</label>
+                                            <select  class="form-control" ng-model="enduser.endusername" ng-init="enduser.endusername = endusers[0]"  ng-options="x for x in endusers">
+                                            </select>
+											</div>
+					
+	 </div>
+	 <div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Choose govt policy</label>
+                                            <select  class="form-control" ng-model="enduser.govtpolicies.groupname" ng-init="enduser.govtpolicies.groupname = enduserpolicys[0]"  ng-options="x for x in enduserpolicys">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="userapplypolicy(enduser.endusername,enduser.govtpolicies.groupname )">Apply</button>
+											</div>
+											
+											
+											
+    </div>
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label> Apply to schemes</label>
+                                                 <select  class="form-control" ng-model="enduser.bank.schemename" ng-init="enduser.bank.schemename = bankschemes[0]"  ng-options="x for x in bankschemes">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="userapplyscheme(enduser.endusername, enduser.bank.schemename)">Apply</button>
+											
+											</div>
+											
+										
+    </div>
+
+	
+	
+	
+	
+	</div>
+	<div class="col-lg-6">
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Available Incentive</label>
+											<ul>
+                                            <li   ng-repeat="x in incentiveavailable">
+											{{x}}
+                                            </li>
+											</ul>
+											</div>
+											<div class="panel-body ">
+											<label>Incentive parameters</label>
+											<ul>
+                                            <li   ng-repeat="x in incentiveparameters">
+											{{x}}
+                                            </li>
+											</ul>
+											
+											
+											</div>
+    </div>
+	
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label> Rating considered  </label>
+											<ul>
+                                            <li   ng-repeat="x in ratingparameters">
+											{{x}}
+                                            </li>
+											</ul>
+											
+    </div>
+	
+	
+	
+	</div>
+	
+	
+	 
+</div>
+    
+</div>
+</div>	
+</div>
+	
+

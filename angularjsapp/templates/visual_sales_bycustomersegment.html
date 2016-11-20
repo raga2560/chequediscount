@@ -1,0 +1,77 @@
+
+<div class="panel panel-default">
+<div class="panel-heading">
+                            Sales by customer segment
+</div>
+
+
+
+
+
+<div class="panel-body">
+<div class="dataTable_wrapper">
+<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th class="success">Customer Segment</th>
+                                            <th class="success">Number of orders</th>
+											<th class="success">Total sales</th>
+                                            
+                                        </tr>
+                                    </thead>
+			<tbody ng-repeat="item in salesbycustomersegment | startFrom:currentPage*pageSize | limitTo:pageSize">
+ 
+ 
+                                
+                                  
+                                        <tr class="odd gradeX">
+                                            <td>{{item._id}}</td>
+											<td>{{item.num_products}}</td>
+											
+											<td>{{item.sales}}</td>
+                                            
+                                         
+                                        </tr>
+                                       
+
+	</tbody>	
+										
+
+  </table>
+                            </div>
+	
+
+   <div class="panel panel-default">						
+<div class="panel-heading">
+                            Number of orders, by customer segment
+</div>							
+
+<div class="panel-body">
+<canvas id="bar" class="chart chart-doughnut" data="segmentdata1" legend="true" 
+  labels="segmentlabels"></canvas> 
+</div>
+
+</div>
+
+<div class="panel panel-default">						
+<div class="panel-heading">
+                            Sales by customer segment
+</div>							
+
+<div class="panel-body">
+<canvas id="bar" class="chart chart-doughnut" data="segmentdata2" legend="true" 
+  labels="segmentlabels"></canvas> 
+</div>
+
+</div>
+
+
+
+    
+  </div>
+  </div>
+  
+  
+  
+
+

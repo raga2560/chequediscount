@@ -1,0 +1,152 @@
+
+
+
+<div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Create government policy
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form role="form" >
+    <div class="row">
+                                <div class="col-lg-6">
+	<div class="form-group">
+                                            <label>Government policy</label>
+											<select  class="form-control" ng-model="govtpolicy.title" ng-init="govtpolicy.title = policygroups[0]"  ng-options="x for x in policygroups">
+                                            </select>
+                                            <!-- input class="form-control" placeholder="Enter policy title" ng-model="govtpolicy.title" -->
+    </div>
+										
+	<div class="form-group">
+                                            <label>Policy description</label>
+                                            <textarea class="form-control" rows="3" ng-model="govtpolicy.description"></textarea>
+    </div>
+	
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Target groups</label>
+                                            <select  class="form-control" ng-model="govtpolicy.targetgroup.groupname" ng-init="govtpolicy.targetgroup.groupname = targetgroups[0]"  ng-options="x for x in targetgroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addtargetgroup()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected target groups</label>
+											<textarea class="form-control" rows="3" ng-model="govtpolicy.targetgroup.dislist"></textarea>
+											</div>
+											
+											
+											
+    </div>
+	
+	<div class="form-group">
+                                            <label>Expectation from policy </label>
+                                            <textarea class="form-control" rows="3" ng-model="govtpolicy.expectation"></textarea>
+    </div>
+	
+	<div class="form-group">
+                                            <label>Expectation from support institutions </label>
+                                            <textarea class="form-control" rows="3" ng-model="govtpolicy.supportexpectation"></textarea>
+    </div>
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Support groups</label>
+                                                 <select  class="form-control" ng-model="govtpolicy.supportgroup.groupname" ng-init="govtpolicy.supportgroup.groupname = supportgroups[0]"  ng-options="x for x in supportgroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addsupportgroup()">Add</button>
+											
+											</div>
+											<div class="panel-body ">
+											<label>Selected support groups</label>
+											<textarea class="form-control" rows="3" ng-model="govtpolicy.supportgroup.dislist"></textarea>
+											</div>
+										
+										
+    </div>
+
+	
+	<div class="form-group panel panel-primary">
+	
+											<div class="panel-heading ">
+                                            <label>Data collection groups</label>
+                                                 <select  class="form-control" ng-model="govtpolicy.datacollectiongroup.groupname" ng-init="govtpolicy.datacollectiongroup.groupname = datacollectiongroups[0]"  ng-options="x for x in datacollectiongroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="adddatacollectiongroup()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected collection groups</label>
+											<textarea class="form-control" rows="3" ng-model="govtpolicy.datacollectiongroup.dislist"></textarea>
+										    </div>
+										
+    </div>
+	
+	
+	</div>
+	<div class="col-lg-6">
+	<div class="form-group panel panel-primary">
+                                            <label>Incentive</label>
+                                            <input class="form-control" placeholder="Enter incentive" ng-model="govtpolicy.incentive.incentive">
+									
+											<select  class="form-control" ng-model="govtpolicy.incentive.incentiveparameter" ng-init="govtpolicy.incentive.incentiveparameter = incentiveparameters[0]"  ng-options="x for x in incentiveparameters">
+                                            </select>
+											
+											<button  class="btn btn-default form-control" ng-click="addincentive()">Add</button>
+											<label>Incentive tooling parameters</label>
+											<textarea class="form-control" rows="3" ng-model="govtpolicy.incentive.dislist"></textarea>
+    </div>
+	<div class="form-group panel-body">
+                                            <label>DisIncentive</label>
+                                            <input class="form-control" placeholder="Enter disincentive" ng-model="govtpolicy.disincentive.disincentive">
+									
+											<select  class="form-control" ng-model="govtpolicy.disincentive.disincentiveparameter" ng-init="govtpolicy.disincentive.disincentiveparameter = disincentiveparameters[0]"  ng-options="x for x in disincentiveparameters">
+                                            </select>
+											
+											
+											<button  class="btn btn-default form-control" ng-click="adddisincentive()">Add</button>
+											<label>Dis Incentive tooling parameters</label>
+											<textarea class="form-control" rows="3" ng-model="govtpolicy.disincentive.dislist"></textarea>
+    </div>
+	
+	
+	
+	<div class="form-group panel panel-primary">
+                                            <label>Rating parameters</label>
+											<select  class="form-control" ng-model="govtpolicy.ratingparameter.parameter" ng-init="govtpolicy.ratingparameter.parameter = ratingparameters[0]"  ng-options="x for x in ratingparameters">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addrating()">Add</button>
+											<label>Selected rating parameters</label>
+                                            <textarea class="form-control" rows="3" ng-model="govtpolicy.ratingparameter.dislist"></textarea>
+    </div>
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Monitoring groups</label>
+                                         
+                                                 <select  class="form-control" ng-model="govtpolicy.monitoringgroup.groupname" ng-init="govtpolicy.monitoringgroup.groupname = monitoringgroups[0]"  ng-options="x for x in monitoringgroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addmonitoringgroup()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected monitoring groups</label>
+											<textarea class="form-control" rows="3" ng-model="govtpolicy.monitoringgroup.dislist"></textarea>
+										    </div>
+    </div>
+	
+	
+	</div>
+	
+	<div class="form-group">
+	<label class="label label-danger" ng-show="error">{{error}} </label>
+	<button  class="btn btn-primary form-control" ng-click="policycreate()">Submit</button>
+	
+	
+	</div>
+	 
+</div>
+</div>
+</div>	
+</div>
+	
+

@@ -1,0 +1,150 @@
+
+
+
+<div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Support group entry
+						</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form role="form" >
+    <div class="row">
+                                <div class="col-lg-6">
+	<div class="form-group">
+                                            <label>Bank, support group scheme</label>
+											<select  class="form-control" ng-model="bankscheme.title" ng-init="bankscheme.title = bankschemes[0]"  ng-options="x for x in bankschemes">
+                                            </select>
+                                            <!-- input class="form-control" placeholder="Enter bank scheme " ng-model="bankscheme.title" -->
+    </div>
+										
+	<div class="form-group">
+                                            <label>Goal description</label>
+                                            <textarea class="form-control" rows="3" ng-model="bankscheme.description"></textarea>
+    </div>
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Choosen govt policy</label>
+                                            <select  class="form-control" ng-model="bankscheme.govtpolicies.groupname" ng-init="bankscheme.govtpolicies.groupname = policygroups[0]"  ng-options="x for x in policygroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addgovtpolicy()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected policies </label>
+											<textarea class="form-control" rows="3" ng-model="bankscheme.govtpolicies.dislist"></textarea>
+											</div>
+											
+											
+											
+    </div>
+	
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Applicable target groups</label>
+                                            <select  class="form-control" ng-model="bankscheme.targetgroup.groupname" ng-init="bankscheme.targetgroup.groupname = targetgroups[0]"  ng-options="x for x in targetgroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addtargetgroup()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected target groups</label>
+											<textarea class="form-control" rows="3" ng-model="bankscheme.targetgroup.dislist"></textarea>
+											</div>
+											
+											
+											
+    </div>
+	
+	<div class="form-group">
+                                            <label>Benefit from policy to bank, support institution</label>
+                                            <textarea class="form-control" rows="3" ng-model="bankscheme.benefit"></textarea>
+    </div>
+	
+	<div class="form-group">
+                                            <label>Investment by support institutions </label>
+                                            <textarea class="form-control" rows="3" ng-model="bankscheme.investment"></textarea>
+    </div>
+	
+	
+	
+	<div class="form-group panel panel-primary">
+	
+											<div class="panel-heading ">
+                                            <label>Data provided</label>
+                                                 <select  class="form-control" ng-model="bankscheme.supportdata.groupname" ng-init="bankscheme.supportdata.groupname = supportdatas[0]"  ng-options="x for x in supportdatas">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addsupportdata()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>All data provided</label>
+											<textarea class="form-control" rows="3" ng-model="bankscheme.supportdata.dislist"></textarea>
+										    </div>
+										
+    </div>
+	
+	
+	</div>
+	<div class="col-lg-6">
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Interested Incentive</label>
+                                            
+									
+											<select  class="form-control" ng-model="bankscheme.incentive.incentiveparameter" ng-init="bankscheme.incentive.incentiveparameter = incentiveparameters[0]"  ng-options="x for x in incentiveparameters">
+                                            </select>
+											
+											<button  class="btn btn-default form-control" ng-click="addincentive()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Incentive tooling parameters</label>
+											<textarea class="form-control" rows="3" ng-model="bankscheme.incentive.dislist"></textarea>
+											</div>
+    </div>
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Interested DisIncentive</label>
+                                            
+									
+											<select  class="form-control" ng-model="bankscheme.disincentive.disincentiveparameter" ng-init="bankscheme.disincentive.disincentiveparameter = disincentiveparameters[0]"  ng-options="x for x in disincentiveparameters">
+                                            </select>
+											
+											
+											<button  class="btn btn-default form-control" ng-click="adddisincentive()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Dis Incentive tooling parameters</label>
+											<textarea class="form-control" rows="3" ng-model="bankscheme.disincentive.dislist"></textarea>
+											</div>
+    </div>
+	
+	
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Interested Rating parameters</label>
+											<select  class="form-control" ng-model="bankscheme.ratingparameter.parameter" ng-init="bankscheme.ratingparameter.parameter = ratingparameters[0]"  ng-options="x for x in ratingparameters">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addrating()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected rating parameters</label>
+                                            <textarea class="form-control" rows="3" ng-model="bankscheme.ratingparameter.dislist"></textarea>
+											</div>
+    </div>
+	
+	
+	
+	</div>
+	
+	<div class="form-group">
+	<label class="label label-danger" ng-show="error">{{error}} </label>
+	<button  class="btn btn-primary form-control" ng-click="bankschemecreate()">Submit</button>
+	</div>
+	 
+</div>
+</div>
+</div>	
+</div>
+	
+

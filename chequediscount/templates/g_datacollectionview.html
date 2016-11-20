@@ -1,0 +1,149 @@
+
+<div class="form-group panel panel-default">
+											<div class="panel-heading ">
+											<button  class="btn btn-primary form-control" ng-click="getdatacollectors()">List</button>
+                                            <label>Datacollector list</label>
+                                            <select  class="form-control" ng-model="selecteddatacollector"   >
+											<option ng-repeat="list in datacollectorlist">{{list.title}}</option>
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="getdatacollectordata(selecteddatacollector)">Select</button>
+											</div>
+											<div class="panel-body ">
+											
+											</div>
+											
+											
+											
+</div>
+
+
+
+<div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Data collector entry
+						</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form role="form" >
+    <div class="row">
+                                <div class="col-lg-6">
+	<div class="form-group">
+                                            <label>Data collector  goal</label>
+                                            <input class="form-control" placeholder="Enter data collector title" ng-model="datacollectorview.title">
+    </div>
+										
+	<div class="form-group">
+                                            <label>Data collector description</label>
+                                            <textarea class="form-control" rows="3" ng-model="datacollectorview.description"></textarea>
+    </div>
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Choosen govt policy</label>
+                                            <select  class="form-control" ng-model="datacollectorview.govtpolicies.groupname" ng-init="datacollectorview.govtpolicies.groupname = policygroups[0]"  ng-options="x for x in policygroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addgovtpolicy()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected policies </label>
+											<textarea class="form-control" rows="3" ng-model="datacollectorview.govtpolicies.dislist"></textarea>
+											</div>
+											
+											
+											
+    </div>
+	
+	
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Applicable target groups</label>
+                                            <select  class="form-control" ng-model="datacollectorview.targetgroup.groupname" ng-init="datacollectorview.targetgroup.groupname = targetgroups[0]"  ng-options="x for x in targetgroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addtargetgroup()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected target groups</label>
+											<textarea class="form-control" rows="3" ng-model="datacollectorview.targetgroup.dislist"></textarea>
+											</div>
+											
+											
+											
+    </div>
+	
+	
+	
+	<div class="form-group">
+                                            <label>Benefit to data collector </label>
+                                            <textarea class="form-control" rows="3" ng-model="datacollectorview.benefit"></textarea>
+    </div>
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Support groups to collect from</label>
+                                                 <select  class="form-control" ng-model="datacollectorview.supportgroup.groupname" ng-init="datacollectorview.supportgroup.groupname = supportgroups[0]"  ng-options="x for x in supportgroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addsupportgroup()">Add</button>
+											
+											</div>
+											<div class="panel-body ">
+											<label>Selected support groups</label>
+											<textarea class="form-control" rows="3" ng-model="datacollectorview.supportgroup.dislist"></textarea>
+											</div>
+										
+										
+    </div>
+
+
+	
+	
+	
+	<div class="form-group panel panel-primary">
+	
+											<div class="panel-heading ">
+                                            <label>Data collected </label>
+                                                 <select  class="form-control" ng-model="datacollectorview.supportdata.groupname" ng-init="datacollectorview.supportdata.groupname = supportdatas[0]"  ng-options="x for x in supportdatas">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addsupportdata()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>All data provided</label>
+											<textarea class="form-control" rows="3" ng-model="datacollectorview.supportdata.dislist"></textarea>
+										    </div>
+										
+    </div>
+	
+	
+	
+	</div>
+	<div class="col-lg-6">
+	
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label> Rating parameters provided </label>
+											<select  class="form-control" ng-model="datacollectorview.ratingparameter.parameter" ng-init="datacollectorview.ratingparameter.parameter = ratingparameters[0]"  ng-options="x for x in ratingparameters">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addrating()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected rating parameters</label>
+                                            <textarea class="form-control" rows="3" ng-model="datacollectorview.ratingparameter.dislist"></textarea>
+											</div>
+    </div>
+	
+	
+	</div>
+	
+	<div class="form-group">
+	<label class="label label-danger" ng-show="error">{{error}} </label>
+	<button  class="btn btn-primary form-control" ng-click="createevent()">Submit</button>
+	</div>
+	 
+</div>
+</div>
+</div>	
+</div>
+	
+

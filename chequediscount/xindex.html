@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="govtindex.html">Link1</a></p>
+	  <p><a href="index.html">Link2</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <div class="col-sm-8 text-left">
+  
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#">Group trading solution using blockchain</a> 
+	  </br>
+	  <div class="row">
+        <div class="col-md-6">
+		
+  
+	User registration (ready)
+      <ul class="well">
+	  <li><a href="/signup">Register </a> </li>
+	  <li><a href="/login">Login </a> </li>
+	  <li><a href="/logout">Logout </a> </li>
+	   
+	   
+	  	  <li><a ui-sref="govtpolicyentry">Govt policy entry </a></li>
+	  
+	  </ul>
+      Seller registration (in progress)
+      <ul class="well">
+	  
+	  <li><a ui-sref="sellerregistration">Register as seller </a></li>
+	  <li><a ui-sref="sellerapply">Seller apply for trading event</a></li>
+	  
+	   <li><a ui-sref="loadmoney"> Load money to pay for asset registration, registration to event</a></li>
+	   <li><a ui-sref="assetregistration">Asset registration</a></li>
+	   <li><a ui-sref="assetapply">Asset apply for event 1 </a></li>
+	   <li><a ui-sref="sellerassetprice">Seller asset price change </a></li>
+	   <li><a ui-sref="sellerpanel">Seller panel </a></li>
+        
+		
+		</ul>
+		
+		Bidder registration (in progress)
+      <ul class="well">
+	   <li><a ui-sref="buyerregistration">Register as buyer </a></li>
+	   <li><a ui-sref="buyerapply">Buyer apply for trading event</a></li>
+	   <li><a ui-sref="buyerassetprice">Buyer Price change </a></li>
+	   <li><a ui-sref="buyerpanel">Buyer panel </a></li>
+	   <li><a ui-sref="charts">Get chart </a></li>
+	   
+	  
+	  </ul>
+		</div>
+	
+		<div class="col-md-6">
+		Management (in progress)
+				  <ul class="well">
+				   <li><a ui-sref="eventregistration">Create trading/group/event </a></li>
+				   <li><a ui-sref="blockassetsinescrow">Blockchain assets in escrow </a></li>
+				   <li><a ui-sref="blocksellerassets">Blockchain assets with sellers </a></li>
+				   <li><a ui-sref="tableoperation">Table operations </a></li>
+				   <li><a ui-sref="mapassetsandbuyers">Map assets, buyers </a></li>
+				   <li><a ui-sref="sendtobuyers">Send assets to buyers 2 </a></li>
+				   <li><a ui-sref="returnassetstoowners">Return assets to owners 3 </a></li>
+				   
+				   <li><a ui-sref="assetroute">List final assets with owners, buyers, escrow 4 </a></li>
+				   
+				   
+				</ul>
+				Govt 
+		<ul class="well">		
+		<li><a ui-sref="setgovtpolicy">Enter policy  </a></li>
+	  
+		</ul>
+		   Perform auction/trading (in progress)
+		<ul class="well">		
+		<li><a ui-sref="assetroute">Start trading  </a></li>
+		<li><a ui-sref="assetroute">Complete trading  </a></li>
+	  
+		</ul>
+		Debug (in progress)
+		<ul class="well">		
+		<li><a ui-sref="loginroute">Login status </a></li>
+		 <li><a ui-sref="assetroute">Asset debug (ready)</a></li>
+	  
+		</ul>
+		</div>
+	</div>
+	
+		
+		
+		
+		
+		
+		
+		
+      
+	  
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-12">
+		<div class="well" ui-view="view3">
+		</div>
+  </div>
+    <div class="col-md-6">
+      
+	   <div class="well" ui-view="view1">
+	 
+	  
+	  </div>  
+	  
+	  
+	  
+       
+    </div>
+	<div class="col-md-6">
+      
+	   <div class="well" ui-view="view2">
+	 
+	  
+	  </div>  
+	  
+	  
+	  
+       
+    </div>
+  </div>         
+  </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Angular -->
+  <script src="angular.min.js"></script>
+  <!-- UI-Router -->
+  <script src="angular-ui-router.js"></script>
+  <script src="js/d3.v3.min.js" charset="utf-8"></script>
+  <script src="js/Chart.js"></script>
+  <script src="js/angular-chart.js"></script>
+  
+    <script src="controllers1.js"></script>
+	<script src="controllers2.js"></script>
+	<script src="controllers3.js"></script>
+    <script src="services.js"></script>
+	
+  
+  <!-- App Script -->
+  <script>
+    angular.module('myapp', ['ui.router', 'myapp.controllers1', 'myapp.controllers2','myapp.controllers3', 'myapp.services'])
+	    .config(function($stateProvider, $urlRouterProvider){
+     
+      // For any unmatched url, send to /route1
+      $urlRouterProvider.otherwise("/route1")
+      
+      $stateProvider
+          
+		  
+        
+        .state('loginroute', {
+            url: "/loginroute",
+			views: {
+                "view1": {
+                    
+					templateUrl: "loginroute.html",
+					 controller: 'LoginCtrl'
+					 
+					
+                }
+				,
+				"view2": {
+                    
+					templateUrl: "loginlisting.html",
+					 controller: 'LoginCtrl'
+		 
+					 
+					
+                }
+            }
+			
+            
+        })
+
+       .state('govtpolicyentry', {
+              url: "/govtpolicyentry",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "templates/g_govt_policycreate.html",
+					 controller: 'AssetPriceCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "sellerassetprice.html",
+					 controller: 'AssetPriceCtrl'
+                }
+			  }
+			})
+
+			
+		 .state('loadmoney', {
+            url: "/loadmoney",
+			views: {
+                "view1": {
+                    
+					templateUrl: "loadmoney.html",
+					 controller: 'SellerRegistrationCtrl'
+					 
+					
+                }
+				,
+				"view2": {
+                    
+					templateUrl: "sellerlistbalance.html",
+					 controller: 'SellerRegistrationCtrl'
+		 
+					 
+					
+                }
+            }
+			
+            
+        })
+		.state('assetroute', {
+            url: "/assetroute",
+			views: {
+                "view1": {
+                    
+					templateUrl: "assetroute.html",
+					 controller: 'AssetCtrl'
+					 
+					
+                }
+				,
+				"view2": {
+                    
+					templateUrl: "listofevents.html"
+		 
+					 
+					
+                }
+            }
+			
+            
+        })
+		
+		
+		.state('setgovtpolicy', {
+              url: "/setgovtpolicy",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "govtlistofevents.html",
+					 controller: 'GovtEventCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "govtpolicy.html",
+					 controller: 'GovtEventCtrl'
+                }
+			  }
+			})
+
+		.state('blockassetsinescrow', {
+              url: "/blockassetsinescrow",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "escrowlistofevents.html",
+					 controller: 'BlockAssetsCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "blockescrowassets.html",
+					 controller: 'BlockAssetsCtrl'
+                }
+			  }
+			})
+
+			.state('blocksellerassets', {
+              url: "/blocksellerassets",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "blocklistofevents.html",
+					 controller: 'BlockAssetsCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "blocksellerassets.html",
+					 controller: 'BlockAssetsCtrl'
+                }
+			  }
+			})
+
+		.state('buyerpanel', {
+              url: "/buyerpanel",
+			
+			views: {
+                
+				"view3": {
+                    
+					templateUrl: "buyerpanel.html",
+					 controller: 'BuyerpanelCtrl'
+                }
+			  }
+			})
+			
+			.state('sellerpanel', {
+              url: "/sellerpanel",
+			
+			views: {
+                
+				"view3": {
+                    
+					templateUrl: "sellerpanel.html",
+					 controller: 'SellerpanelCtrl'
+                }
+			  }
+			})
+
+
+			
+			
+		.state('buyerassetprice', {
+              url: "/buyerassetprice",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "listofuserassets.html",
+					 controller: 'AssetPriceCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "buyerassetprice.html",
+					 controller: 'AssetPriceCtrl'
+                }
+			  }
+			})
+
+		
+
+			
+		.state('sellerassetprice', {
+              url: "/sellerassetprice",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "listofuserassets.html",
+					 controller: 'AssetPriceCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "sellerassetprice.html",
+					 controller: 'AssetPriceCtrl'
+                }
+			  }
+			})
+
+			
+		.state('assetregistration', {
+              url: "/assetregistration",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "listofuserassets.html",
+					 controller: 'AssetRegistrationCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "createassetdetails.html",
+					 controller: 'AssetRegistrationCtrl'
+                }
+			  }
+			})
+
+		 .state('eventregistration', {
+              url: "/eventregistration",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "listofevents.html",
+					 controller: 'EventRegistrationCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "createeventdetails.html",
+					 controller: 'EventRegistrationCtrl'
+                }
+			  }
+			})
+
+		 .state('sellerregistration', {
+              url: "/sellerregistration",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "sellerlistofevents.html",
+					 controller: 'SellerRegistrationCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "createsellerdetails.html",
+					 controller: 'SellerRegistrationCtrl'
+                }
+			  }
+			})
+		
+		.state('mapassetsandbuyers', {
+              url: "/mapassetsandbuyers",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "mapbuyers.html",
+					 controller: 'MapTradeCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "mapassets.html",
+					 controller: 'MapTradeCtrl'
+                }
+			  }
+			})
+
+			.state('charts', {
+              url: "/charts",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "chartbuyers.html",
+					 controller: 'ChartsCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "mapassets.html",
+					 controller: 'MapTradeCtrl'
+                }
+			  }
+			})
+			
+		.state('sellerapply', {
+              url: "/sellerapply",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "sellerlistofevents.html",
+					 controller: 'SellerRegistrationCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "sellerapply.html",
+					 controller: 'SellerRegistrationCtrl'
+                }
+			  }
+			})
+			
+			.state('assetapply', {
+              url: "/assetapply",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "listofuserassets.html",
+					 controller: 'AssetRegistrationCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "assetapply.html",
+					 controller: 'AssetRegistrationCtrl'
+                }
+			  }
+			})
+			
+			.state('tableoperation', {
+              url: "/tableoperation",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "tableoperation.html",
+					 controller: 'TableCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "tableoperation.html",
+					 controller: 'TableCtrl'
+                }
+			  }
+			})
+			
+			.state('buyerapply', {
+              url: "/buyerapply",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "buyerlistofevents.html",
+					 controller: 'BuyerRegistrationCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "buyerapply.html",
+					 controller: 'BuyerRegistrationCtrl'
+                }
+			  }
+			})
+		
+		
+		 .state('buyerregistration', {
+              url: "/buyerregistration",
+			
+			views: {
+                "view2": {
+                    
+					templateUrl: "buyerlistofevents.html",
+					 controller: 'BuyerRegistrationCtrl'
+                },
+				"view1": {
+                    
+					templateUrl: "createbuyerdetails.html",
+					 controller: 'BuyerRegistrationCtrl'
+                }
+			  }
+			})
+		
+        	
+			
+		  
+        
+    });
+	
+	
+	
+
+  </script>
+
+</body>
+
+</html>

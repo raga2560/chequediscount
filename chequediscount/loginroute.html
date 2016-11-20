@@ -1,0 +1,36 @@
+<h3 ng-show="username">Logged in as  {{username}} </h3> 
+<h3 ng-hide="username">Not logged in</h3> 
+
+<button ng-click="createtestnetkeys()" ng-disabled="testnet.address" ng-class="!testnet.address ? 'btn-primary' : 'btn-default'">Create testnet keys </button>
+<button ng-click="createmainnetkeys()" ng-disabled="mainnet.address" ng-class="!mainnet.address ? 'btn-primary' : 'btn-default'">Create mainnet keys </button>
+<button ng-click="getkeys()">Get keys </button>
+<div ng-show="username">
+<h4>Testnet data </h4>
+<p> address 	: <span > {{ testnet.address}}</span> </br> 
+<button ng-click="checktestnetbalance()" ng-class="!testnet.address ? 'btn-primary' : 'btn-default'">Get balance </button> 
+
+  <p ng-repeat="elem in balance.testnet" >
+		-- {{elem.value}}  satoshis
+  </p>
+
+</p>
+{{listing.testnet.address}}
+<p> publickey 	: <span > {{ testnet.publickey}}</span> </p>
+<p> privatekey 	: <span > {{ testnet.privatekey}}</span> </p>
+
+</div>
+
+<div ng-show="username">
+<h4>Mainnet data </h4>
+<p> address 	: <span > {{ mainnet.address}}</span> </p>
+<p> publickey 	: <span > {{ mainnet.publickey}}</span> </p>
+<p> privatekey 	: <span > {{ mainnet.privatekey}}</span> </p>
+
+
+</div>
+<div ng-show="error">
+{{error}}
+</div>
+  
+
+

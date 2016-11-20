@@ -1,0 +1,12 @@
+<table ng-table="tableParams" class="table" show-filter="true">
+    <tr ng-repeat="record in $data">
+        <td title="'Issuer'" filter="{ name: 'text'}" sortable="'issuer'">
+            {{record.issuer}}</td>
+        
+		<td title="'Reputation'" filter="{ reputation: 'number'}" sortable="'reputation'">
+            {{record.reputation}}</td>
+		
+		
+		<td > <button  class="btn btn-default" ng-click="listowners()">View documents </button></td>
+    </tr>
+</table>

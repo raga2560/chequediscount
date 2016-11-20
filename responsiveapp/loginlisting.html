@@ -1,0 +1,12 @@
+
+<div ng-show="username">
+<h4>Testnet data </h4>
+<p> address 	: <span > {{ testnet.address}}</span> </br> 
+<button ng-click="checktestnetbalance()" ng-class="!testnet.address ? 'btn-primary' : 'btn-default'">Get address listing </button> 
+</p>
+
+ <pre style="overflow-x:scroll; overflow-y:scroll;  height: 15pc">
+  {{listtestnet}}
+  </pre>
+
+  

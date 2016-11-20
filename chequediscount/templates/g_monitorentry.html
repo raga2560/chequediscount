@@ -1,0 +1,146 @@
+
+
+
+<div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Monitor group entry
+						</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form role="form" >
+    <div class="row">
+                                <div class="col-lg-6">
+	<div class="form-group">
+                                            <label>Monitor group goal</label>
+                                            <input class="form-control" placeholder="Enter monitoring title" ng-model="monitor.title">
+    </div>
+										
+	<div class="form-group">
+                                            <label>Monitor Goal description</label>
+                                            <textarea class="form-control" rows="3" ng-model="monitor.description"></textarea>
+    </div>
+	
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Choosen govt policy</label>
+                                            <select  class="form-control" ng-model="monitor.govtpolicies.groupname" ng-init="monitor.govtpolicies.groupname = policygroups[0]"  ng-options="x for x in policygroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addgovtpolicy()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected policies </label>
+											<textarea class="form-control" rows="3" ng-model="monitor.govtpolicies.dislist"></textarea>
+											</div>
+											
+											
+											
+    </div>
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Target groups to monitor</label>
+                                            <select  class="form-control" ng-model="monitor.targetgroup.groupname" ng-init="monitor.targetgroup.groupname = targetgroups[0]"  ng-options="x for x in targetgroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addtargetgroup()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected target groups</label>
+											<textarea class="form-control" rows="3" ng-model="monitor.targetgroup.dislist"></textarea>
+											</div>
+											
+											
+											
+    </div>
+	
+	
+	<div class="form-group">
+                                            <label>What is being monitored </label>
+                                            <textarea class="form-control" rows="3" ng-model="monitor.monitorwhat"></textarea>
+    </div>
+	
+	<div class="form-group">
+                                            <label>Type of data collected </label>
+                                            <textarea class="form-control" rows="3" ng-model="monitor.whatdata"></textarea>
+    </div>
+	
+	
+	
+	</div>
+	<div class="col-lg-6">
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Support groups, bank to monitor</label>
+                                                 <select  class="form-control" ng-model="monitor.supportgroup.groupname" ng-init="monitor.supportgroup.groupname = supportgroups[0]"  ng-options="x for x in supportgroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addsupportgroup()">Add</button>
+											
+											</div>
+											<div class="panel-body ">
+											<label>Selected support groups</label>
+											<textarea class="form-control" rows="3" ng-model="monitor.supportgroup.dislist"></textarea>
+											</div>
+										
+										
+    </div>
+
+	
+		
+	<div class="form-group panel panel-primary">
+	
+											<div class="panel-heading ">
+                                            <label>Data monitored </label>
+                                                 <select  class="form-control" ng-model="monitor.supportdata.groupname" ng-init="monitor.supportdata.groupname = supportdatas[0]"  ng-options="x for x in supportdatas">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addsupportdata()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>All data provided</label>
+											<textarea class="form-control" rows="3" ng-model="monitor.supportdata.dislist"></textarea>
+										    </div>
+										
+    </div>
+	
+	<div class="form-group panel panel-primary">
+	
+											<div class="panel-heading ">
+                                            <label>Data collection groups</label>
+                                                 <select  class="form-control" ng-model="monitor.datacollectiongroup.groupname" ng-init="monitor.datacollectiongroup.groupname = datacollectiongroups[0]"  ng-options="x for x in datacollectiongroups">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="adddatacollectiongroup()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected collection groups</label>
+											<textarea class="form-control" rows="3" ng-model="monitor.datacollectiongroup.dislist"></textarea>
+										    </div>
+										
+    </div>
+	
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label> Rating parameters provided </label>
+											<select  class="form-control" ng-model="monitor.ratingparameter.parameter" ng-init="monitor.ratingparameter.parameter = ratingparameters[0]"  ng-options="x for x in ratingparameters">
+                                            </select>
+											<button  class="btn btn-default form-control" ng-click="addrating()">Add</button>
+											</div>
+											<div class="panel-body ">
+											<label>Selected rating parameters</label>
+                                            <textarea class="form-control" rows="3" ng-model="monitor.ratingparameter.dislist"></textarea>
+											</div>
+    </div>
+	
+	</div>
+	
+	<div class="form-group">
+	<label class="label label-danger" ng-show="error">{{error}} </label>
+	<button  class="btn btn-primary form-control" ng-click="createmonitorentry()">Submit</button>
+	</div>
+	 
+</div>
+</div>
+</div>	
+</div>
+	
+

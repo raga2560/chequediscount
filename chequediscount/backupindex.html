@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+
+<head>
+  <title>Jan-Dhan to Jan-Empower</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-left">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      
+	  <H3> Govt </H3>
+	  <p><a ui-sref="govtpolicyentry">Policy create </a></p>
+	  <H3> Bank </H3>
+	  <p><a ui-sref="supportgroupentry">Scheme create </a></p>
+	  <H3> End user </H3>
+	  <p><a ui-sref="enduserentry"> Account create </a></p>
+	  
+		  <p><a ui-sref="enduserapply"> Apply for policies and schemes </a></p>
+		  <p><a ui-sref="endusernotification"> Notification of policies and schemes </a></p>
+	   <H3> Correspondent </H3>
+	  <p><a ui-sref="enduserentry"> Enduser account create </a></p>
+	  
+		  <p><a ui-sref="enduserapply"> Apply for enduser </a></p>
+		  <p><a ui-sref="endusernotification"> View endusers notifications  </a></p>
+      
+    </div>
+    <div class="col-sm-8 text-left">
+  
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#">Jan-Dhan to Jan-Empower</a> 
+	  </br>
+	  <div class="row">
+        <div class="col-md-6">
+		
+  
+	
+      <ul class="well">
+	  <li><a href="/signup">Register </a> </li>
+	  <li><a href="/login">Login </a> </li>
+	  <li><a href="/logout">Logout </a> </li>
+	   
+	   
+	  	  <!-- li><a ui-sref="govtpolicyentry">Govt policy entry </a></li>
+		  <li><a ui-sref="govtpolicyview">Govt policy view </a></li>
+		  <li><a ui-sref="supportgroupentry">Support group entry </a></li>
+		  <li><a ui-sref="supportgroupview">Support group view </a></li>
+		  <li><a ui-sref="datacollectionentry"> Data collection entry </a></li>
+		  <li><a ui-sref="datacollectionview"> Data collection view </a></li>
+		  <li><a ui-sref="monitorentry"> Monitor entry </a></li>
+		  <li><a ui-sref="monitorview"> Monitor view </a></li>
+		  <li><a ui-sref="enduserentry"> Enduser create </a></li>
+		  <li><a ui-sref="enduserapply"> Enduser apply for policies and schemes </a></li>
+		  <li><a ui-sref="endusernotification"> Enduser is notified about policies and schemes </a></li>
+		  <li><a ui-sref="enduserview"> Enduser view </a></li -->
+		  
+	  
+	  </ul>
+		</div>
+	
+		<div class="col-md-6">
+		</div>
+	</div>
+	
+		
+		
+		
+		
+		
+		
+		
+      
+	  
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-12">
+		<div class="well" ui-view="view3">
+		</div>
+  </div>
+    <div class="col-md-6">
+      
+	   <div class="well" ui-view="view1">
+	 
+	  
+	  </div>  
+	  
+	  
+	  
+       
+    </div>
+	<div class="col-md-6">
+      
+	   <div class="well" ui-view="view2">
+	 
+	  
+	  </div>  
+	  
+	  
+	  
+       
+    </div>
+  </div>         
+  </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Angular -->
+  <script src="angular.min.js"></script>
+  <!-- UI-Router -->
+  <script src="angular-ui-router.js"></script>
+  <script src="js/d3.v3.min.js" charset="utf-8"></script>
+  <script src="js/Chart.js"></script>
+  <script src="js/angular-chart.js"></script>
+  
+    <script src="controllers1.js"></script>
+	<script src="controllers2.js"></script>
+	<script src="controllers3.js"></script>
+    <script src="services.js"></script>
+	
+  
+  <!-- App Script -->
+  <script>
+    angular.module('myapp', ['ui.router', 'myapp.controllers1', 'myapp.controllers2','myapp.controllers3', 'myapp.services'])
+	    .config(function($stateProvider, $urlRouterProvider){
+     
+      // For any unmatched url, send to /route1
+      $urlRouterProvider.otherwise("/route1")
+      
+      $stateProvider
+          
+		  
+        
+        .state('loginroute', {
+            url: "/loginroute",
+			views: {
+                "view1": {
+                    
+					templateUrl: "loginroute.html",
+					 controller: 'LoginCtrl'
+					 
+					
+                }
+				,
+				"view2": {
+                    
+					templateUrl: "loginlisting.html",
+					 controller: 'LoginCtrl'
+		 
+					 
+					
+                }
+            }
+			
+            
+        })
+       .state('govtpolicyentry', {
+              url: "/govtpolicyentry",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_govt_policycreate.html",
+					 controller: 'GovtPolicyCtrl'
+                }
+				
+			  }
+			})
+			
+			.state('govtpolicyview', {
+              url: "/govtpolicyview",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_govt_policyview.html",
+					 controller: 'GovtPolicyCtrl'
+                }
+			  }
+			})
+
+
+			.state('supportgroupentry', {
+              url: "/supportgroupentry",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_supportgroupentry.html",
+					 controller: 'SupportGroupCtrl'
+                }
+			  }
+			})
+			
+			.state('supportgroupview', {
+              url: "/supportgroupview",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_supportgroupview.html",
+					 controller: 'SupportGroupCtrl'
+                },
+				
+			  }
+			})
+			
+			
+			.state('datacollectionentry', {
+              url: "/datacollectionentry",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_datacollectionentry.html",
+					 controller: 'DataCollectionCtrl'
+                }
+			  }
+			})
+			
+			
+			.state('datacollectionview', {
+              url: "/datacollectionview",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_datacollectionview.html",
+					 controller: 'DataCollectionCtrl'
+                }
+			  }
+			})
+			
+			
+			.state('monitorentry', {
+              url: "/monitorentry",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_monitorentry.html",
+					 controller: 'MonitorCtrl'
+                }
+			  }
+			})
+			
+			
+			.state('monitorview', {
+              url: "/monitorview",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_monitorview.html",
+					 controller: 'MonitorCtrl'
+                }
+			  }
+			})
+			
+			.state('enduserentry', {
+              url: "/enduserentry",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_enduserentry.html",
+					 controller: 'EnduserPolicyCtrl'
+                }
+			  }
+			})
+			.state('enduserapply', {
+              url: "/enduserapply",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_enduserapply.html",
+					 controller: 'EnduserPolicyCtrl'
+                }
+			  }
+			})
+			
+			.state('endusernotification', {
+              url: "/endusernotification",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_endusernotification.html",
+					 controller: 'EnduserPolicyCtrl'
+                }
+			  }
+			})
+			
+			
+			.state('enduserview', {
+              url: "/enduserview",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "templates/g_enduserview.html",
+					 controller: 'EnduserPolicyCtrl'
+                }
+			  }
+			})
+			
+			
+		
+		 
+        	
+			
+		  
+        
+    });
+	
+	
+	
+
+  </script>
+
+</body>
+
+</html>

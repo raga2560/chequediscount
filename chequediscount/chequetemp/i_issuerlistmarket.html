@@ -1,0 +1,18 @@
+<table ng-table="tableParams" class="table" show-filter="true">
+    <tr ng-repeat="record in $data">
+        <td title="'Issuer'" filter="{ name: 'text'}" sortable="'issuer'">
+            {{record.issuer}}</td>
+        <td title="'Amount'" filter="{ amount: 'number'}" sortable="'amount'">
+            {{record.amount}}</td>
+		<td title="'Reputation'" filter="{ reputation: 'number'}" sortable="'reputation'">
+            {{record.reputation}}</td>
+		<td title="'Discount'" filter="{ discount: 'number'}" sortable="'discount'">
+            {{record.discount}}</td>
+		<td title="'Exposure'" filter="{ exposure: 'number'}" sortable="'exposure'">
+            {{record.exposure}}</td>
+		<td title="'Limit'" filter="{ limit: 'number'}" sortable="'limit'">
+            {{record.limit}}</td>
+		<td title="'Discounter'" filter="{ discounter: 'text'}" sortable="'discounter'">
+            {{record.discounter}}</td>
+    </tr>
+</table>
