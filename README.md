@@ -12,16 +12,7 @@ Getting started
 - node app.js
 
 
-## To load data
-
-http://localhost:8888/import
 
 ## To see in browser
 
-http://localhost:8888/visualization
-
-## Video of visualization
-
-https://youtu.be/Bc8WiIVWnak
-
-Original framework was obtained from mongodb tutorial.
+http://localhost:8888
