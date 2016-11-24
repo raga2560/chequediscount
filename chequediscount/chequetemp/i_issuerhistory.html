@@ -1,3 +1,10 @@
+<div class="panel panel-primary">
+                        <div class="panel-heading">
+                            History
+							<button  class="btn btn-default" data-toggle="modal" data-target="#myModalissuerhistory" >Select cheque issuer  </button>
+                        </div>
+                        <div class="panel-body">
+						
 <table ng-table="tableParams" class="table" show-filter="true">
     <tr ng-repeat="record in $data">
         <td title="'Issuer'" filter="{ name: 'text'}" sortable="'issuer'">
@@ -14,3 +21,48 @@
 		<td><button  class="btn btn-default" ng-click="listowners()">View details </button> </td>
     </tr>
 </table>
+
+</div>
+</div>
+
+
+
+	
+	  <!-- Modal -->
+  <div class="modal fade" id="myModalissuerhistory" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Cheque issuer selection screen </h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Select Issuer </label>
+                                            <select  class="form-control" ng-model="issuer.username" ng-init="issuer.username = issuers[0]._id"  ng-options="x._id for x in issuers">
+                                            </select>
+											
+											</div>
+											<div class="panel-body ">
+											
+											{{issuer.username._id}}
+											</div>
+											
+											
+											
+    </div>
+	
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default"  data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>	
+
+  
+

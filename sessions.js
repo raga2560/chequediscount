@@ -13,7 +13,7 @@ function SessionsDAO(db) {
 
     var sessions = db.collection("sessions");
 
-    this.startSession = function(username, callback) {
+    this.startSession = function(username, account, callback) {
         "use strict";
 
         // Generate session id
@@ -22,7 +22,7 @@ function SessionsDAO(db) {
         var session_id = crypto.createHash('sha1').update(current_date + random).digest('hex');
 
         // Create session document
-        var session = {'username': username, '_id': session_id}
+        var session = {'username': username, '_id': session_id, account:account}
 
         // Insert session document
         sessions.insert(session, function (err, result) {
@@ -57,7 +57,7 @@ function SessionsDAO(db) {
                 return;
             }
 
-            callback(null, session.username);
+            callback(null, session);
         });
     }
 }

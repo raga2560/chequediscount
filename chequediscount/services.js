@@ -1,48 +1,38 @@
 angular.module('myapp.services', [])
 
-.factory('UsersService', function($http) {
-            var result = [];
+.factory('LoginService', function($http) {
+            var user = {
+				username:'',
+				status:'',
+				account:'',
+				loggedin:''
+			};
 
             return {
-                 getusers: function() {
-                     return $http.get('http://localhost:4730/readyapp/users/teama');
+                 setlogin: function(data) {
+                     user = data;
                  },
-				 send: function(sentobj) {
-                     var responsePromise = $http.post("http://localhost:4730/readyapp/senduser", sentobj, {});
-       
-					return responsePromise;
-                 }
+				 getloginstatus: function() {
+                   return user;
+                 },
+				 getlogin : function()
+				 {
+					 
+					 $http.get('/cheque/isLoggedIn').then(function(response) {
+	  
+						user =  response.data;
+		
+		
+					}, function(errResponse) {
+		
+					console.error('Error while fetching notes');
+      
+					});
+	  
+				 }
             };  
         })
-		
-.factory('NewsService', function($http) {
-            var result = [];
 
-            return {
-                 getnews: function() {
-                     return $http.get('http://localhost:4730/readyapp/news/teama');
-                 },
-				 send: function(sentobj) {
-                     var responsePromise = $http.post("http://localhost:4730/readyapp/sendnews", sentobj, {});
-       
-					return responsePromise;
-                 }
-            };  
-        })
-		
- .factory('QuestionService', function($http) {
-            var result = [];
-
-            return {
-                 getquestions: function() {
-                     return $http.get('http://localhost:4730/readyapp/questions/teama');
-                 },
-				 send: function(sentobj) {
-                     var responsePromise = $http.post("http://localhost:4730/readyapp/sendquestion", sentobj, {});
-       
-					return responsePromise;
-                 }
-            };  
-        });
+;
 		
 		

@@ -1,0 +1,46 @@
+
+
+
+<div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Login panel
+							<button  class="btn btn-default" ng-click="refresh()">Refresh</button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6" ng-hide="loginstatus.loggedin">
+                                    <form role="form" >
+    <div class="form-group">
+                                            <label>Username</label>
+                                            <input class="form-control" placeholder="Enter name" ng-model="login.username">
+    </div>
+	<div class="form-group">
+                                            <label>Password</label>
+                                            <input class="form-control" type="password" placeholder="password" ng-model="login.password">
+    </div>
+	
+	
+	
+	<div class="form-group">
+	
+	<button  class="btn btn-default" ng-click="login1()">Login</button>
+</div>
+	 
+</div>
+<div class="col-lg-6" ng-hide="loginstatus.loggedin">
+</div>
+<div class="form-group" ng-show="loginstatus.loggedin">
+                                            <label>You are logged in</label>
+                                            
+    </div>
+	
+</div>
+</div>	
+<div class="panel-footer" ng-show="loginerror">
+                            {{loginerror}}
+							
+                        </div>
+						
+</div>
+	
+

@@ -4,32 +4,51 @@
 <div class="panel panel-primary">
                         <div class="panel-heading">
                             Create new cheque issuer
+							<button  class="btn btn-default" ng-click="refresh()">Refresh</button>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form role="form" ng-submit="submit()">
-    <div class="form-group">
-                                            <label>Name</label>
-                                            <input class="form-control" placeholder="Enter name" ng-model="buyer.name">
+    
+	<div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Issuer name</label>
+                                            <select  class="form-control" ng-model="issuer.username" ng-init="issuer.username = issuers[0]._id"  ng-options="x._id for x in issuers">
+                                            </select>
+											
+											</div>
+											<div class="panel-body ">
+											
+											{{issuer.username}}
+											</div>
+											
+											
+											
     </div>
 										
 	<div class="form-group">
                                             <label>Residential Address</label>
-                                            <textarea class="form-control" rows="3" ng-model="buyer.resaddress"></textarea>
+                                            <textarea class="form-control" rows="3" ng-model="issuer.resaddress"></textarea>
     </div>
 	
 	<div class="form-group">
                                             <label>Upload aggrement </label>
-                                            <textarea class="form-control" rows="3" ng-model="buyer.resaddress"></textarea>
+                                            <textarea class="form-control" rows="3" ng-model="issuer.aggrement"></textarea>
     </div>
 	<div class="form-group">
                                             <label>Upload collateral </label>
-                                            <textarea class="form-control" rows="3" ng-model="buyer.resaddress"></textarea>
+                                            <textarea class="form-control" rows="3" ng-model="issuer.collateral"></textarea>
     </div>
+	
+	<div class="form-group">
+                                            <label>Issue limit</label>
+                                            <input class="form-control" type="number" placeholder="limit amount" ng-model="issuer.issuerlimit">
+    </div>
+	
 	<div class="form-group">
 	<label class="label label-danger" ng-show="error"> {{error}} </label>
-	<button  class="btn btn-default" ng-click="createbuyer()">Register</button>
+	<button  class="btn btn-default" ng-click="submitissuer()">Register</button>
 </div>
 	 
 </div>

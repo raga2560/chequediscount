@@ -7,6 +7,45 @@
 	  <button  class="btn btn-default" ui-sref="chequeagentacceptcheque"> Accept cheque from receiver  </button>
 	  <button  class="btn btn-default" ui-sref="chequeagentissuerhistory"> Issuer history   </button>
 	  <button  class="btn btn-default" ui-sref="chequeagentreceiverhistory"> Receiver history   </button>
+	  <button  class="btn btn-default" data-toggle="modal" data-target="#myModalagent" ui-sref="chequeagenthelp">Help  </button>
+	  
+	
+		
+	  <!-- Modal -->
+  <div class="modal fade" id="myModalagent" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Cheque agent screen </h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+                                            
+											
+											<label>Purpose </label>
+											<p> 
+											This screen is meant to cheque agent to accept documents from cheque issuers and cheque receivers.
+											</p>
+											
+											<p> 
+											The agent disburses cash to cheque receivers after the discounter has discounted the cheque. 
+											The agents then sends the cheque to the discounter. 
+											</p>
+											
+                                            
+		  </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default"  data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>	
+
 	  
 	  
 	  

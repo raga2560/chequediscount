@@ -1,17 +1,64 @@
+<div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Enter discount 
+							<button  class="btn btn-default" ng-click="refreshmarket()">Refresh Market</button>
+                        </div>
+                        <div class="panel-body">
 <table ng-table="tableParams" class="table" show-filter="true">
     <tr ng-repeat="record in $data">
         <td title="'Issuer'" filter="{ name: 'text'}" sortable="'issuer'">
             {{record.issuer}}</td>
         <td title="'Amount'" filter="{ amount: 'number'}" sortable="'amount'">
             {{record.amount}}</td>
-		<td title="'Reputation'" filter="{ reputation: 'number'}" sortable="'reputation'">
-            {{record.reputation}}</td>
+		<td title="'Rating'" filter="{ issuerrating: 'number'}" sortable="'issuerrating'">
+            
+			<button class="btn btn-info btn-lg" ng-show="record.issuerrating" >{{record.issuerrating}} </button>
+			</td>
 		<td title="'Discount'" filter="{ discount: 'number'}" sortable="'discount'">
-            {{record.discount}}</td>
+            
+			<button class="btn btn-info btn-lg" ng-show="record.discount" >{{record.discount}} </button>
+			
+			</td>
 		<td title="'Exposure'" filter="{ exposure: 'number'}" sortable="'exposure'">
             {{record.exposure}}</td>
-		<td title="'Limit'" filter="{ limit: 'number'}" sortable="'limit'">
-            {{record.limit}}</td>
-		<td > <button  class="btn btn-default" ng-click="listowners()">Enter discount </button></td>
+		<td title="'Issuer Limit'" filter="{ issuerlimit: 'number'}" sortable="'issuerlimit'">
+            {{record.issuerlimit}}</td>
+		<td > 
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" ng-show="record.traded=='pending'" ng-click="enterdiscount(record._id)"  data-target="#myModal">Enter discount</button>
+		
+		</td>
     </tr>
 </table>
+
+</div>
+</div>
+
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Enter discount</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+                                            <label>Enter discount, like 5 (for 5%)</label>
+											<select  class="form-control" ng-model="entereddiscount" ng-init="entereddiscount = 5"  ng-options="x for x in [2,3,4,5,6,7,8,10,15,20]">
+                                            </select>
+											
+                                            
+		  </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" ng-click="setdisco()" data-dismiss="modal">Submit</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>	
+

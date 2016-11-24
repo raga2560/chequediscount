@@ -4,36 +4,87 @@
 <div class="panel panel-primary">
                         <div class="panel-heading">
                             Accept cheque from receiver
+							<button  class="btn btn-default" ng-click="refresh()">Refresh</button>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form role="form" ng-submit="submit()">
-    <div class="form-group">
-                                            <label>Issuers Name</label>
-                                            <input class="form-control" placeholder="Enter name" ng-model="buyer.name">
+									
+    <div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Issuer name</label>
+                                            <select  class="form-control" ng-model="cheque.issuer" ng-init="cheque.issuer = issuers[0]._id"  ng-options="x._id for x in issuers">
+                                            </select>
+											
+											</div>
+											<div class="panel-body ">
+											
+											{{cheque.issuer}}
+											</div>
+											
+											
+											
     </div>
 	
-   <div class="form-group">
-                                            <label>Receiver Name</label>
-                                            <input class="form-control" placeholder="Enter name" ng-model="buyer.name">
+	
+   <div class="form-group panel panel-primary">
+											<div class="panel-heading ">
+                                            <label>Receiver name</label>
+                                            <select  class="form-control" ng-model="cheque.receiver" ng-init="cheque.receiver = receivers[0]._id"  ng-options="x._id for x in receivers">
+                                            </select>
+											
+											</div>
+											<div class="panel-body ">
+											
+											{{cheque.receiver}}
+											</div>
+											
+											
+											
     </div>
+	
 										
 										
 	
 	<div class="form-group">
-                                            <label>Cheque details </label>
-                                            <textarea class="form-control" rows="3" ng-model="buyer.resaddress"></textarea>
+                                            <label>Cheque amount </label>
+                                            <input class="form-control"  placeholder="cheque amount" ng-model="cheque.amount"></input>
     </div>
+	
+	<div class="form-group">
+                                            <label>Cheque id </label>
+                                            <input class="form-control"     placeholder="cheque id "  ng-model="cheque.chequeid"></input>
+    </div>
+	
+	<div class="form-group">
+                                            <label>Cheque account </label>
+                                            <input class="form-control"   placeholder="cheque account number " ng-model="cheque.chequeaccount"></input>
+    </div>
+	
+	<div class="form-group">
+                                            <label>Cheque issue date </label>
+                                            <input class="form-control"  type="date" ng-model="cheque.issuedate"></input>
+    </div>
+	
+	
+	<div class="form-group">
+                                            <label>Cheque cashing date </label>
+                                            <input class="form-control"  type="date" ng-model="cheque.cashingdate"></input>
+    </div>
+	
 	
 	<div class="form-group">
                                             <label>Set maximum discount, like 5 (for 5%)</label>
-                                            <input class="form-control" placeholder="Maximum discount" ng-model="buyer.name">
+											<select  class="form-control" ng-model="cheque.maxdiscount" ng-init="cheque.maxdiscount = 5"  ng-options="x for x in [2,3,4,5,6,7,8,10,15,20]">
+                                            </select>
+											
+                                            
     </div>
 	
 	<div class="form-group">
 	<label class="label label-danger" ng-show="error"> {{error}} </label>
-	<button  class="btn btn-default" ng-click="createbuyer()">Submit</button>
+	<button  class="btn btn-default" ng-click="submitcheque()">Submit</button>
 </div>
 	 
 </div>
