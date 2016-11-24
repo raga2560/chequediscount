@@ -1,5 +1,5 @@
 
-Example of visualization
+Cheque discount management system
 
 Getting started
 
