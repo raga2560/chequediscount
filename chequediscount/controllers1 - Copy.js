@@ -1,7 +1,7 @@
 angular.module('myapp.controllers1', ["ngTable"])
 
 
-.controller('DiscounterCtrl', function($scope, $http, $state, NgTableParams, LoginService ) {
+.controller('DiscounterCtrl', function($scope, $http, NgTableParams, LoginService ) {
 	
 var self = this;
 var data1 = [{name: "Moroni", age: 50} ,
@@ -30,19 +30,13 @@ $scope.loginstatus = {
 	LoginService.getlogin();
 	$scope.refreshmarket = function()
 	 {
- 		 $scope.loginstatus = LoginService.getloginstatus();
-		 if($scope.loginstatus.username=='')
-		 {
-		$state.go('loginroute');	 
-			 
-		 }
-
+		 $scope.loginstatus = LoginService.getloginstatus();
 		
 			$scope.getactivetransactions();
 	 }
 	 $scope.getactivetransactions = function() 
 	 {
-      $http.post('/cheque/getactivetransactions').then(function(response) {
+      $http.get('/cheque/getactivetransactions').then(function(response) {
 	  
 	    $scope.agenttransactions = response.data;
 		$scope.tableParams = new NgTableParams({}, { dataset: $scope.agenttransactions});
@@ -136,7 +130,7 @@ $scope.loginstatus = {
 
 })
 
-.controller('AgentCtrl', function($scope, $http, $state, NgTableParams, LoginService ) {
+.controller('AgentCtrl', function($scope, $http, NgTableParams, LoginService ) {
 	
 var self = this;
 var data1 = [{name: "Moroni", age: 50} ,
@@ -195,20 +189,13 @@ var	cheque = {
   
    $scope.refresh = function ()
    {
-   		 $scope.loginstatus = LoginService.getloginstatus();
-		 if($scope.loginstatus.username=='')
-		 {
-		$state.go('loginroute');	 
-			 
-		 }
-
 	   $scope.getissuers();
 	   $scope.getreceivers();
    }
 
    $scope.getissuers = function() 
 	 {
-      $http.post('/cheque/getissuers').then(function(response) {
+      $http.get('/cheque/getissuers').then(function(response) {
 	  
 	    $scope.issuers = response.data;
 		
@@ -220,7 +207,7 @@ var	cheque = {
 	 }
     $scope.getreceivers = function() 
 	 {
-      $http.post('/cheque/getreceivers').then(function(response) {
+      $http.get('/cheque/getreceivers').then(function(response) {
 	  
 	    $scope.receivers = response.data;
 		
@@ -283,7 +270,7 @@ var	cheque = {
 	 }
 	 $scope.getactivetransactions = function() 
 	 {
-      $http.post('/cheque/getactivetransactions').then(function(response) {
+      $http.get('/cheque/getactivetransactions').then(function(response) {
 	  
 	    $scope.agenttransactions = response.data;
 		$scope.tableParams = new NgTableParams({}, { dataset: $scope.agenttransactions});
@@ -302,7 +289,7 @@ var	cheque = {
 })
 
 
-.controller('ReceiverCtrl', function($scope, $http, $state, NgTableParams, LoginService ) {
+.controller('ReceiverCtrl', function($scope, $http, NgTableParams, LoginService ) {
 	
 var self = this;
 var data1 = [{name: "Moroni", age: 50} ,
@@ -320,19 +307,13 @@ LoginService.getlogin();
 
 	$scope.refreshmarket = function()
 	 {
- 		 $scope.loginstatus = LoginService.getloginstatus();
-		 if($scope.loginstatus.username=='')
-		 {
-		$state.go('loginroute');	 
-			 
-		 }
-
+		 $scope.loginstatus = LoginService.getloginstatus();
 		
 			$scope.getactivetransactions();
 	 }
 	 $scope.getactivetransactions = function() 
 	 {
-      $http.post('/cheque/getactivetransactions').then(function(response) {
+      $http.get('/cheque/getactivetransactions').then(function(response) {
 	  
 	    $scope.agenttransactions = response.data;
 		$scope.tableParams = new NgTableParams({}, { dataset: $scope.agenttransactions});
@@ -351,7 +332,7 @@ LoginService.getlogin();
 
    $scope.getissuers = function() 
 	 {
-      $http.post('/cheque/getissuers').then(function(response) {
+      $http.get('/cheque/getissuers').then(function(response) {
 	  
 	    $scope.issuers = response.data;
 		
@@ -363,7 +344,7 @@ LoginService.getlogin();
 	 }
     $scope.getreceivers = function() 
 	 {
-      $http.post('/cheque/getreceivers').then(function(response) {
+      $http.get('/cheque/getreceivers').then(function(response) {
 	  
 	    $scope.receivers = response.data;
 		
@@ -379,7 +360,7 @@ $scope.refreshmarket();
 
 })
 
-.controller('IssuerCtrl', function($scope, $http, $state, NgTableParams, LoginService ) {
+.controller('IssuerCtrl', function($scope, $http, NgTableParams, LoginService ) {
 	
 var self = this;
 var data1 = [{name: "Moroni", age: 50} ,
@@ -394,22 +375,15 @@ var data = [{issuer: "Moroni", amount: 50, reputation:80, discount: 10, exposure
 $scope.tableParams = new NgTableParams({}, { dataset: data});
 
 LoginService.getlogin();
-
 	$scope.refreshmarket = function()
 	 {
-
 		 $scope.loginstatus = LoginService.getloginstatus();
-		 if($scope.loginstatus.username=='')
-		 {
-		$state.go('loginroute');	 
-			 
-		 }
 		
 			$scope.getactivetransactions();
 	 }
 	 $scope.getactivetransactions = function() 
 	 {
-      $http.post('/cheque/getactivetransactions').then(function(response) {
+      $http.get('/cheque/getactivetransactions').then(function(response) {
 	  
 	    $scope.agenttransactions = response.data;
 		$scope.tableParams = new NgTableParams({}, { dataset: $scope.agenttransactions});
@@ -428,7 +402,7 @@ $scope.refresh = function ()
 
    $scope.getissuers = function() 
 	 {
-      $http.post('/cheque/getissuers').then(function(response) {
+      $http.get('/cheque/getissuers').then(function(response) {
 	  
 	    $scope.issuers = response.data;
 		
@@ -440,7 +414,7 @@ $scope.refresh = function ()
 	 }
     $scope.getreceivers = function() 
 	 {
-      $http.post('/cheque/getreceivers').then(function(response) {
+      $http.get('/cheque/getreceivers').then(function(response) {
 	  
 	    $scope.receivers = response.data;
 		

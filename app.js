@@ -11,6 +11,8 @@ var express = require('express')
  app.use('/visualization',express.static(__dirname + '/angularjsapp'));
  app.use('/chequediscount',express.static(__dirname + '/chequediscount'));
  
+ 
+ 
 
 MongoClient.connect('mongodb://localhost:27017/confapp', function(err, db) {
     "use strict";

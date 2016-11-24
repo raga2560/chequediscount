@@ -131,9 +131,11 @@ angular.module('myapp.controllers2', ['chart.js'])
       
 	  });
 	 }
+	 $scope.refresh();
 	 
 	   
    })
+   
 
    
 .controller('TestCtrl', function($scope, $http) {

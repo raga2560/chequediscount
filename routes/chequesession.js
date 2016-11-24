@@ -44,13 +44,29 @@ function ChequeSessionHandler (db) {
 	
 	this.isLoggedIn = function(req, res) {
         var session_id = req.cookies.session;
+		var  user = {
+				username:'',
+				status:'',
+				account:'',
+				loggedin:''
+			};
         sessions.getUsername(session_id, function(err, sess) {
             "use strict";
 
-            if (!err ) {
+            if (!err && sess) {
+				
+				 user = {
+				username:sess.username,
+				status:'active',
+				account:sess.account,
+				loggedin:true
+			};
 					
-				return res.json({username:sess.username, account:sess.account});
+				return res.json(user);
             }
+			else {
+				return res.json(user);
+			}
 			
             
         });
@@ -139,11 +155,7 @@ function etherregister(userid) {
 	this.getissuers = function(req, res) {
         "use strict";
 
-		console.log("issuers" + req.username);
-		if(req.username == '' || typeof req.username == 'undefined')
-		{
-			return res.status(5001).json({username:req.username});
-		}
+
 		
 		
 		users.listissuers(req.username, function(err, issuerecords) {
@@ -154,11 +166,6 @@ function etherregister(userid) {
     }
 	this.getreceivers = function(req, res) {
         "use strict";
-console.log("receivers" + req.username);
-		if(req.username == '' || typeof req.username == 'undefined')
-		{
-			return res.status(5001).json({username:req.username});
-		}
 		
 		
 		users.listreceivers(req.username, function(err, records) {

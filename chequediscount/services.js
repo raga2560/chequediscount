@@ -18,7 +18,7 @@ angular.module('myapp.services', [])
 				 getlogin : function()
 				 {
 					 
-					 $http.get('/cheque/isLoggedIn').then(function(response) {
+					 $http.post('/cheque/isLoggedIn').then(function(response) {
 	  
 						user =  response.data;
 		

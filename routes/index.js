@@ -20,6 +20,12 @@ module.exports = exports = function(app, db) {
 	app.post('/cheque/handleLoginRequest', chequesession.handleLoginRequest);
 	app.post('/cheque/adminLogout', chequesession.adminLogout);
 	
+	app.post('/cheque/isLoggedIn', chequesession.isLoggedIn);
+	app.post('/cheque/getissuers', chequesession.getissuers);
+	app.post('/cheque/getreceivers', chequesession.getreceivers);
+	app.post('/cheque/getusertransactions', chequesession.getusertransactions);
+	app.post('/cheque/gettransactions', chequesession.gettransactions);
+	app.post('/cheque/getactivetransactions', chequesession.getactivetransactions);
 	
 	app.get('/cheque/isLoggedIn', chequesession.isLoggedIn);
 	app.get('/cheque/getissuers', chequesession.getissuers);
