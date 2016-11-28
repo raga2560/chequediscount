@@ -122,7 +122,7 @@ function ChequeAppDAO(db) {
   
   // 
   
-  	this.setdiscount = function(username, chequerecordid, setdiscount, callback) {
+  	this.setdiscount = function(username, useraddress, chequerecordid, setdiscount, callback) {
         "use strict";
 		
 		
@@ -141,12 +141,13 @@ function ChequeAppDAO(db) {
 			if(record.traded == 'pending') {
 			record.discount = setdiscount;
 			record.discounter = username;
+			record.discounteraddress = useraddress;
 			record.traded = 'done';
 			
 			var query = {};
 		    query['_id'] = o_id;
 		
-			chequeappstore.update(query, {$set: record} , function (err, rec){
+			  chequeappstore.update(query, {$set: {discount: setdiscount, discounter: username, traded: 'done',discounteraddress: useraddress }} , function (err, rec){
 
 			if (err) return callback (err, null);
 					
@@ -239,7 +240,7 @@ function ChequeAppDAO(db) {
 		    query['_id'] = o_id;
 		
 			
-			chequeappstore.update(query, {$set: record} , function (err, rec){
+			chequeappstore.update(query, {$set: {issuerrating: setrating, ratingmessage: ratingmessage, rated:'yes'}} , function (err, rec){
 
 			if (err) return callback (err, null);
 					
@@ -254,13 +255,13 @@ function ChequeAppDAO(db) {
 	
 	
 
-	this.updatecheque = function (cheque,issuerlimit,  callback) {
+	this.updatecheque = function (cheque,issuerlimit,networkrating,  callback) {
 	
         "use strict";
 		var query = {};
 		query['_id'] = cheque._id;
 		
-		chequeappstore.update(query, {$set: {issuerlimit: issuerlimit} } , function (err, rec){
+		chequeappstore.update(query, {$set: {issuerlimit: issuerlimit, networkrating: networkrating, exposure: exposure} } , function (err, rec){
 
 			if (err) return callback (err, null);
 					

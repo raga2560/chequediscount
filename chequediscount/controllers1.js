@@ -198,7 +198,8 @@ var	cheque = {
    		 $scope.loginstatus = LoginService.getloginstatus();
 		 if($scope.loginstatus.username=='')
 		 {
-		$state.go('loginroute');	 
+			if(!$state.is('chequeagent'))
+				$state.go('loginroute');	 
 			 
 		 }
 
