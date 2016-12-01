@@ -13,7 +13,6 @@ var express = require('express')
  
  
  
-
 MongoClient.connect('mongodb://localhost:27017/confapp', function(err, db) {
     "use strict";
     if(err) throw err;
@@ -32,6 +31,6 @@ MongoClient.connect('mongodb://localhost:27017/confapp', function(err, db) {
     // Application routes
     routes(app, db);
 
-    app.listen(8888);
-    console.log('Express server listening on port 8888');
+    app.listen(8080);
+    console.log('Express server listening on port 8080');
 });

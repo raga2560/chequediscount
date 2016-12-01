@@ -151,7 +151,7 @@ function ChequeAppDAO(db) {
 
 			if (err) return callback (err, null);
 					
-					callback(null, rec);
+			//		callback(null, rec);
 			});
 			}
 		
@@ -255,13 +255,29 @@ function ChequeAppDAO(db) {
 	
 	
 
-	this.updatecheque = function (cheque,issuerlimit,networkrating,  callback) {
+	this.updatecheque = function (cheque,issuerlimit,networkrating,exposure,issueraddress,  callback) {
 	
         "use strict";
 		var query = {};
 		query['_id'] = cheque._id;
 		
-		chequeappstore.update(query, {$set: {issuerlimit: issuerlimit, networkrating: networkrating, exposure: exposure} } , function (err, rec){
+		chequeappstore.update(query, {$set: {issuerlimit: issuerlimit, networkrating: networkrating, 
+				exposure: exposure, issueraddress: issueraddress} } , function (err, rec){
+
+			if (err) return callback (err, null);
+					
+					callback(null, rec);
+			});
+			
+    }
+	
+
+	this.updateratingfor_issuers = function (issuername,rating,  callback) {
+	
+        "use strict";
+		var query = {issuer:issuername};
+		
+		chequeappstore.update(query, {$set: {networkrating: rating }}, {multi:true } , function (err, rec){
 
 			if (err) return callback (err, null);
 					

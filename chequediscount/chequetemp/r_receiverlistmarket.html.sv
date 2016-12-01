@@ -11,7 +11,7 @@
         <td title="'Amount'" filter="{ amount: 'number'}" sortable="'amount'">
             {{record.amount}}</td>
 		<td title="'Rating/NW Rating'" filter="{ issuerrating: 'number'}" sortable="'issuerrating'">
-		<button class="btn btn-info btn-lg" ng-show="record.issuerrating" >{{record.issuerrating}}  </button>
+		<button class="btn btn-info btn-lg" ng-show="record.issuerrating" >{{record.issuerrating}} /{{record.networkrating}} </button>
             </td>
 		<td title="'Discount'" filter="{ discount: 'number'}" sortable="'discount'">
 		<button class="btn btn-info btn-lg" ng-show="record.discount" >{{record.discount}} % </button>

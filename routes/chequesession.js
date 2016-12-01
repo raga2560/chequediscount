@@ -7,9 +7,13 @@ var request = require('request');
 var UsersDAO = require('../users').UsersDAO
   , SessionsDAO = require('../sessions').SessionsDAO
   , UserrecordDAO = require('../userrecord').UserrecordDAO
+  , EthereumAppDAO = require('../etherium').EthereumAppDAO
   
   , ChequeAppDAO = require('../chequeapp').ChequeAppDAO
   ;
+
+  var local = false;
+  var etherrecords ;
 
 /* The SessionHandler must be constructed with a connected db */
 function ChequeSessionHandler (db) {
@@ -20,10 +24,12 @@ function ChequeSessionHandler (db) {
 	var userrecord = new UserrecordDAO(db);
   
 	var chequeapp = new ChequeAppDAO(db);
+	var ethereumapp = new EthereumAppDAO(db);
 	
 	
 	var uploadedimage = "";
 
+	
     this.isLoggedInMiddleware = function(req, res, next) {
         var session_id = req.cookies.session;
         sessions.getUsername(session_id, function(err, sess) {
@@ -87,20 +93,6 @@ function ChequeSessionHandler (db) {
 	
 	
 
-function etherregister(userid) {
-    /*
-	etherapp.insertEntry(username, function(err, companyevent) {
-					console.log(username + "creating company event");
-					if(err) {return 
-						res.json({error:err}); }
-					else {
-					return res.json(companyevent);
-					}
-				});
-				
-				
-				*/
-}
 
 
 
@@ -145,7 +137,152 @@ function etherregister(userid) {
         });
     }
 	
+	setTimeout( function load_etheraccounts ()
+	{
+		
+		if(local == false) {
+		ethereumapp.getetheraccounts(function(err, record) {
+		// currently any loggedin user can create policy
+		etherrecords = record;
+		userrecord.updatealletheraddress(record, function(err, remainingrecord) {
+		
+		
+		if(!err) {
+			
+			etherrecords = remainingrecord;
+		}
+		
+		
+		});
+		
+		
+			// return res.json(remainingrecord);
+		}); 
+		}
+		
+        /*
+		accounts
+		update each user record with address.
+		mark allocated ones.
+		
+		*/
+		
+	}, 20);
 	
+	function getall_ratings()
+	{
+		
+		userrecord.listaccissuers('dummy', function(err, issuerrecords) {
+		// currently any loggedin user can create policy
+		
+		//	return res.json(issuerecords);
+		if(err) return;
+		
+		if(local == false) {
+		
+		for(var i = 0; i< issuerrecords.length; i++ ) {
+			
+			ethereumapp.getuserrating(issuerrecords[i].useraddress, function(err, rating) {
+		
+				userrecord.updateissuerrating(issuerrecords[i]._id,rating.rating, function(err, data) {
+				
+				});
+			
+		});
+		
+		}
+		}
+		
+		});
+		
+	    setTimeout(getall_ratings,10000);
+	}
+
+
+        setTimeout(getall_ratings,200);
+	function reflect_ratingchange_on_cheques()
+	{
+		
+		userrecord.listaccissuers('dummy', function(err, issuerrecords) {
+		if(err) return;
+		
+		
+		        for(var i = 0; i< issuerrecords.length; i++ ) {
+			chequeapp.updateratingfor_issuers(issuerrecords[i].username,issuerrecords[i].rating, function(err, transactions) {
+
+			});
+	                }	
+		});
+	    setTimeout(reflect_ratingchange_on_cheques,10000);
+        }
+        setTimeout(reflect_ratingchange_on_cheques,500);
+
+	function create_etherrecord (discounter,issuer, discountername, issuername, recordid)
+	{
+		
+		if(local == false) {
+		ethereumapp.entertransaction(discounter,issuer, discountername, issuername, recordid, function(err, record) {
+		// currently any loggedin user can create policy
+console.log('create_etherrecord', record);
+			return ;
+		}); 
+		}
+        
+		
+	}
+	this.etherenterrecord = function(req, res) {
+        "use strict";
+
+/*
+		var eth = req.body;
+		
+		if(local == false) {
+		ethereumapp.entertransaction(eth.discounter,eth.issuer, eth.discountername, eth.issuername, eth.recordid, function(err, record) {
+		// currently any loggedin user can create policy
+			return res.json(record);
+		}); 
+		}
+       */ 
+    }
+
+	function update_etherrecord_rating (discounter,recordid, rating, ratingmessage)
+	{
+		
+		if(local == false) {
+		ethereumapp.setrating(discounter,recordid, rating, ratingmessage, function(err, record) {
+		// currently any loggedin user can create policy
+			return ; //res.json(record);
+		});
+        }
+		
+	}
+	
+	this.ethersetrating = function(req, res) {
+        "use strict";
+
+
+		var eth = req.body;
+		if(local == false) {
+		ethereumapp.setrating(eth.addr,eth.recordid, eth.rating, eth.ratingmessage, function(err, record) {
+		// currently any loggedin user can create policy
+			return res.json(record);
+		});
+        }
+    }
+
+	this.ethergetrating = function(req, res) {
+        "use strict";
+
+
+		var eth = req.body;
+		if(local == false) {
+		ethereumapp.getuserrating(eth.addr, function(err, record) {
+		// currently any loggedin user can create policy
+			return res.json(record);
+		});
+        }
+    }
+
 	
 	
 	
@@ -169,6 +306,17 @@ function etherregister(userid) {
 		
 		
 		users.listreceivers(req.username, function(err, records) {
+		// currently any loggedin user can create policy
+			return res.json(records);
+		});
+        
+    }
+	
+	this.getdiscounters = function(req, res) {
+        "use strict";
+		
+		
+		users.listdiscounters(req.username, function(err, records) {
 		// currently any loggedin user can create policy
 			return res.json(records);
 		});
@@ -255,16 +403,27 @@ function etherregister(userid) {
 		}
 		
 		
-		console.log(req.username);
+		console.log("disco="+ etherrecords );
 		
 		
 	
 		var data = req.body;
+
+		var discounter = {
+			
+		username: data.username._id,
+		account:'discounter',
+		useraddress: etherrecords.shift(),
+		resaddress:data.resaddress,
+		aggrement:data.aggrement ,
+	
+		etherrec :{}
+		};
+
 		
 		
 		
-		
-		userrecord.addaccountrecord(req.username, 'discounter',data, function(err, record) {
+		userrecord.addaccountrecord(discounter.username, discounter, function(err, record) {
 		
 		console.log(record);
 		if(!err) {
@@ -295,6 +454,7 @@ function etherregister(userid) {
 		var receiver = {
 	username: data.username._id,
 	account:'receiver',
+	useraddress: etherrecords.shift(),
 	resaddress:data.resaddress,
 	aggrement:data.aggrement,
 	etherrec :{}
@@ -337,12 +497,13 @@ function etherregister(userid) {
 		var issuer = {
 	username: data.username._id,
 	account:'issuer',
+	useraddress: etherrecords.shift(),
 	resaddress:data.resaddress,
 	aggrement:data.aggrement ,
 	collateral:data.collateral,
 	issuerlimit:data.issuerlimit,
-	exposure:'',
-	rating:'',
+	exposure:10,
+	rating:0,
 	etherrec :{}
 };
 
@@ -377,7 +538,10 @@ function etherregister(userid) {
 			
 			console.log("issuer="+record);
 			var issuerlimit = record.issuerlimit;
-			chequeapp.updatecheque(chequerecord, issuerlimit, function(err, chequerecord) {
+			var networkrating = record.rating;
+			var exposure = record.exposure;
+			var issueraddress = record.useraddress;
+			chequeapp.updatecheque(chequerecord, issuerlimit, networkrating, exposure,issueraddress,  function(err, chequerecord) {
 			//if(err) return ;
 				
 				return;
@@ -413,6 +577,8 @@ function etherregister(userid) {
 			receiver:data.receiver._id,		// username
 			agent:req.username,			// username
 			chequeid:data.chequeid,	
+			issueraddress: '',
+			discounteraddress:'',
 			chequeaccount:data.chequeaccount,
 			cashingdate: data.cashingdate,
 			issuedate:data.issuedate,
@@ -420,6 +586,8 @@ function etherregister(userid) {
 			issuerlimit:'',
 			issuerrating:'',
 			ratingmessage:'',
+			networkrating : 0,
+			exposure : '10',
 			discounter:'' ,		// username
 			discount:'',
 			maxdiscount :data.maxdiscount,
@@ -435,7 +603,7 @@ function etherregister(userid) {
 
 		
 		
-		// Update remaining during frontend work ramesh1
+		// Update remaining during frontend work 
 		
 		chequeapp.addcheque(req.username, cheque, function(err, chequerecord) {
 		// currently any loggedin user can create policy
@@ -512,46 +680,30 @@ function etherregister(userid) {
 		
 		
 		var useraccessingrecord = req.username; 
-		
-		chequeapp.setdiscount(useraccessingrecord,chequerecord.recordid,chequerecord.discount,  function(err, record) {
+	        userrecord.readaccountrecord(useraccessingrecord, function (err1, userrecord1) {	
+		//  get address of user
+		if(!err1)  {
+		var useraddress = userrecord1.useraddress; 
+		console.log('before setdiscount', userrecord1);
+		chequeapp.setdiscount(useraccessingrecord,useraddress, chequerecord.recordid,chequerecord.discount,  function(err, record) {
 			
 		// currently any loggedin user can create policy
 		if(!err)  {
-			// process_transactions("setdiscount", record, setdiscound);
+			
+		console.log('before create_etherrecord', record);
+			create_etherrecord (record.discounteraddress, record.issueraddress,  record.discounter, record.issuer, record._id);
 		}
 		return res.json(record);
+		});
+		}
+
 		});
         
     }
 	
-	function process_setrating(type, record)
-	{
-		var ratemsg = {
-			issuer : record.issuer,
-			receiver : record.receiver,
-			issuerrating : record.issuerrating,
-			ratingmessage: record.ratingmessage,
-			discounter: record.discounter,
-			recordid :record._id,
-			chequeid : record.chequeid
-			
-		};
-		
-		chequeapp.addrating(ratemsg,  function(err, record) {
-			
-		// currently any loggedin user can create policy
-		if(!err)  {
-			//
-		}
-		
-		//return res.json(record);
-		});
-			
-			
-		
-	}
 	
-	this.setissuerrating = function(req, res, next) {
+	
+	this.setissuerrating = function(req, res) {
         "use strict";
 
 		if(req.username == '' || typeof req.username == 'undefined')
@@ -573,16 +725,22 @@ function etherregister(userid) {
 		
 		var useraccessingrecord = req.username; 
 		
+		userrecord.readaccountrecord(useraccessingrecord, function(err, record1) {
+			if(err) return res.json(err) ;
+			var discounteraddress = record1.useraddress;
 		chequeapp.setissuerrating(useraccessingrecord,chequerecord.recordid,chequerecord.rating,chequerecord.ratingmessage,  function(err, record) {
 			
 		// currently any loggedin user can create policy
 		if(!err)  {
+			
+			update_etherrecord_rating (discounteraddress,chequerecord.recordid, chequerecord.rating, chequerecord.ratingmessage);
 			//process_setrating("setrating", record, setrating);
 			//load_etherratings_tomongo(); // This will load ether ratings and calculate average
 		}
 		
 		return res.json(record);
 		});
+	});
         
     }
 	
@@ -690,7 +848,7 @@ function etherregister(userid) {
 
                 if (err) return res.json({error:err});
 				
-				etherregister(username);
+				// etherregister(username);
                 
 				sessions.startSession(user['_id'], user.account, function(err, session_id) {
                     "use strict";
@@ -758,5 +916,7 @@ function etherregister(userid) {
   
 	
 }
+
+
 
 module.exports = ChequeSessionHandler;

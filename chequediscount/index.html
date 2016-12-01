@@ -631,6 +631,30 @@
 			  }
 			})
 			
+			.state('chequeagentdiscountercreate', {
+              url: "/chequeagentdiscountercreate",
+			
+			views: {
+                "view3": {
+                    
+					templateUrl: "chequetemp/a_agentnewdiscounter.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainindex": {
+                    
+					templateUrl: "chequetemp/a_agentindex.html",
+					 controller: 'AgentCtrl'
+                },
+				"mainbutton": {
+                    
+					templateUrl: "chequetemp/a_agentbutton.html",
+					 controller: 'AgentCtrl'
+                }
+				
+				
+			  }
+			})
+			
 			
 		.state('chequeagentreceivercreate', {
               url: "/chequeagentreceivercreate",

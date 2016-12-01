@@ -169,6 +169,16 @@ $scope.issuer = {
 	etherrec :{}
 };
 
+$scope.discounter = {
+	username: '',
+	account:'discounter',
+	resaddress:'',
+	aggrement:'' ,
+	issuerlimit:'',
+	etherrec :{}
+};
+
+
 var	cheque = {
 			issuer:'',			// username
 			receiver:'',		// username
@@ -204,6 +214,7 @@ var	cheque = {
 		 }
 
 	   $scope.getissuers();
+	   $scope.getdiscounters();
 	   $scope.getreceivers();
    }
 
@@ -231,6 +242,20 @@ var	cheque = {
       
 	  });
 	 } 
+	 $scope.getdiscounters = function() 
+	 {
+		 
+      $http.post('/cheque/getdiscounters').then(function(response) {
+	  
+	    $scope.discounters = response.data;
+		
+      }, function(errResponse) {
+		
+        console.error('Error while fetching notes');
+      
+	  });
+	 } 
+	 
 	 
 	 $scope.submitreceiver = function() 
 	 {
@@ -262,6 +287,22 @@ var	cheque = {
 	 }
 
 
+	 $scope.submitdiscounter = function() 
+	 {
+      $http.post('/cheque/creatediscounter', $scope.discounter).then(function(response) {
+	  
+	  alert('submit success');
+		
+      }, function(errResponse) {
+		
+		alert('submit failed');
+
+        console.error('Error while fetching notes');
+      
+	  });
+	 }
+
+	 
 
 	 $scope.submitcheque = function() 
 	 {

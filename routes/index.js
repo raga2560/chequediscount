@@ -23,12 +23,14 @@ module.exports = exports = function(app, db) {
 	app.post('/cheque/isLoggedIn', chequesession.isLoggedIn);
 	app.post('/cheque/getissuers', chequesession.getissuers);
 	app.post('/cheque/getreceivers', chequesession.getreceivers);
+	app.post('/cheque/getdiscounters', chequesession.getdiscounters);
 	app.post('/cheque/getusertransactions', chequesession.getusertransactions);
 	app.post('/cheque/gettransactions', chequesession.gettransactions);
 	app.post('/cheque/getactivetransactions', chequesession.getactivetransactions);
 	
 	app.get('/cheque/isLoggedIn', chequesession.isLoggedIn);
 	app.get('/cheque/getissuers', chequesession.getissuers);
+	app.get('/cheque/getdiscounters', chequesession.getdiscounters);
 	app.get('/cheque/getreceivers', chequesession.getreceivers);
 	app.get('/cheque/getusertransactions', chequesession.getusertransactions);
 	app.get('/cheque/gettransactions', chequesession.gettransactions);
@@ -44,6 +46,9 @@ module.exports = exports = function(app, db) {
 	app.post('/cheque/setdiscount', chequesession.setdiscount);
 	app.post('/cheque/setissuerrating', chequesession.setissuerrating);
 	
+	app.post('/cheque/etherenterrecord', chequesession.etherenterrecord);
+	app.post('/cheque/ethergetrating', chequesession.ethergetrating);
+	app.post('/cheque/ethersetrating', chequesession.ethersetrating);
 	
 
 

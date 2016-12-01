@@ -11,18 +11,18 @@
             {{record.issuer}}</td>
         <td title="'Amount'" filter="{ amount: 'number'}" sortable="'amount'">
             {{record.amount}}</td>
-		<td title="'Rating'" filter="{ issuerrating: 'number'}" sortable="'issuerrating'">
+		<td title="'Rating/NW Rating'" filter="{ issuerrating: 'number'}" sortable="'issuerrating'">
             
-			<button class="btn btn-info btn-lg" ng-show="record.issuerrating" >{{record.issuerrating}} </button>
+			<button class="btn btn-info btn-lg" ng-show="record.issuerrating" >{{record.issuerrating}} /{{record.networkrating}}</button>
 			</td>
 		<td title="'Discount'" filter="{ discount: 'number'}" sortable="'discount'">
             
-			<button class="btn btn-info btn-lg" ng-show="record.discount" >{{record.discount}} </button>
+			<button class="btn btn-info btn-lg" ng-show="record.discount" >{{record.discount}} % </button>
 			</td>
 		
 		
 		<td > 
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" ng-show="record.discounter==loginstatus.username" ng-click="enterrating(record._id)"  data-target="#myModal">Enter rating</button>
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" ng-show="record.discounter==loginstatus.username&& record.rated=='no'" ng-click="enterrating(record._id)"  data-target="#myModal">Enter rating</button>
 		
 		
 		</td>

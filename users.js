@@ -99,6 +99,19 @@ function UsersDAO(db) {
             callback(null, data);
         });
     }
+	this.listdiscounters = function(username, callback) {
+        "use strict";
+		
+        users.find({'account':'discounter'},{_id:1, account:1}).toArray(function(err, data) {
+            "use strict";
+
+			console.log(data);
+            if (err) return callback(err, null);
+
+            callback(null, data);
+        });
+    }
+
 	this.listreceivers = function(username, callback) {
         "use strict";
 		

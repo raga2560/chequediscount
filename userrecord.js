@@ -72,17 +72,69 @@ function UserrecordDAO(db) {
         }); 
 		
     }
+	
+	
+	this.updatealletheraddress = function(records, callback) {
+		 "use strict";
+		 
+		 var recordlength;
+		accountrecstore.find({}).toArray(function(err, data) {
+            "use strict";
+
+		//console.log(data);
+        if (err) return callback(err, null);
+		recordlength = data.length;
+		
+		for(var i=0; i< data.length; i++) {
+			
+			var query = {};
+		    query['_id'] = data[i]._id;
+			
+			 accountrecstore.update(query, {$set: {useraddress: records[i] }} , function (err, rec){
+			 //console.log(data);
+            
+			//if (err) return callback(err, null);
+			
+			 });
+		}
+			var data1 = records.slice(recordlength);
+            callback(null, data1);
+        });
+		
+	}
+	
+	
+	
+	
+	this.updateissuerrating = function(recordid, rating, callback) {
+		 "use strict";
+		 
+		
+			var query = {};
+		    query['_id'] = recordid;
+			
+			 accountrecstore.update(query, {$set: {rating: rating}} , function (err, rec){
+				 callback(null, rec);
+			 });
+		
+        
+		
+	}
+	
+	
+	
 	this.listaccissuers = function(username, callback) {
         "use strict";
 		
         accountrecstore.find({'account':'issuer'}).toArray(function(err, data) {
             "use strict";
 
-			console.log(data);
-            if (err) return callback(err, null);
+			if (err) return callback(err, null);
 
+			
             callback(null, data);
-        });
+			
+		});
     }
 	
 	this.listdiscounters = function(username, callback) {
