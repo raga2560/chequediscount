@@ -1,0 +1,125 @@
+
+<div class='panel panel-primary' >
+		<div class="panel-heading">
+                            Answers update <button type="button" class="btn " ng-click="displayupdatequestion()" >  Refresh  </button> 
+							<label> <input class="radio-inline" type="radio" ng-model="updateselection.name" value="answers"> answers </input> </label>
+							<label> <input class="radio-inline"  type="radio" ng-model="updateselection.name" value="leads">leads </input> </label>
+							<label> <input class="radio-inline"  type="radio" ng-model="updateselection.name" value="affiliates">affiliates </input> </label>
+                        </div>
+		<div class="panel-body">
+		
+		<div class="row">
+							 <div class="col-lg-6" >
+							<div class="form-group">
+                                            <label>Question title</label>
+                                           {{currentqa.question.title}}
+                                        </div>
+										
+						</div>
+						<div class="col-lg-6" >
+						
+						</div>
+		</div>
+
+		</div>
+		<div class="panel-body" ng-show="updateselection.name=='answers'">
+
+		<div class="row" ng-repeat="ans in currentqa.answers">
+			
+		<label>{{ans.title}}</label> <button type="button" class="btn " ng-click="selectupdateanswer($index)" >  Select  </button>  
+		<p ng-bind-html="ans.description"> </p>
+		</div>
+		
+		
+		<div class="row">
+							 <div class="col-lg-6" >
+							<div class="form-group">
+                                            <label>Answer title</label>
+                                            <input class="form-control"  placeholder="Enter project name" ng-model="questionanswerentry.answer.title">
+                                        </div>
+										
+						</div>
+						<div class="col-lg-6" >
+						
+						</div>
+		</div>
+		<div class="row">
+						  <div class="panel-body">
+										<div class="form-group">
+						  <label>Answer Description </label>
+							
+										<text-angular   placeholder="Enter Description" ng-model="questionanswerentry.answer.description"></text-angular>
+						</div>
+						</div>
+						
+                                        
+		</div>
+							<button type="button" class="btn btn-primary btn-block " ng-click="enteranswer()" ng-show="selectedanswer == '-1'">  Add answer  </button>
+							<button type="button" class="btn btn-primary btn-block " ng-click="deleteanswer()" ng-show="selectedanswer != '-1'">  Delete answer  </button>
+							<button type="button" class="btn btn-primary btn-block " ng-click="updateanswer()" ng-show="selectedanswer != '-1'">  Update answer  </button>
+							<button type="button" class="btn btn-primary btn-block " ng-click="cancelselectanswer()" ng-show="selectedanswer != '-1' ">  Cancel selection  </button>
+		
+		</div>
+		<div class="panel-body"  ng-show="updateselection.name=='leads'">
+
+		<div class="row" ng-repeat="ans in currentqa.leads">
+			
+		<p> {{ans}}</p><button type="button" class="btn " ng-click="selectupdatelead($index)" >  Select  </button> 
+		</div>
+		
+		<div class="row">
+						  <div class="panel-body">
+										<div class="form-group">
+						  <label>Leads </label>
+							
+										<text-angular   placeholder="Enter Description" ng-model="questionanswerentry.lead"></text-angular>
+						</div>
+						
+							<button type="button" class="btn btn-primary btn-block " ng-click="enterlead()" ng-show="selectedlead=='-1'">  Add lead  </button>
+							<button type="button" class="btn btn-primary btn-block " ng-click="deletelead()" ng-show="selectedlead!='-1'">  Delete Lead  </button>
+									<button type="button" class="btn btn-primary btn-block " ng-click="updatelead()" ng-show="selectedlead!='-1'">  Update Lead  </button>
+							<button type="button" class="btn btn-primary btn-block " ng-click="cancelselectlead()" ng-show="selectedlead!='-1'">  Cancel selection  </button>
+						</div>
+		
+		</div>
+		</div>
+		<div class="panel-body"  ng-show="updateselection.name=='affiliates'">
+
+		<div class="row" ng-repeat="ans1 in currentqa.affiliatelinks">
+			
+		<p>  {{ans1.affiliatename}} <button type="button" class="btn " ng-click="selectupdateaffiliate($index)" >  Select  </button> 
+		
+		</p>
+		<p ng-bind-html="ans1.affiliatelink">  </p>
+		</div>
+		<div class="row">
+			<div class="form-group">
+                                            <label>affiliate links</label>
+											<input class="form-control" placeholder="Enter name"   ng-model="questionanswerentry.affiliate.affiliatename" >
+                                            
+											<text-angular   placeholder="Enter Description" ng-model="questionanswerentry.affiliate.affiliatelink"></text-angular>
+											<button type="button" class="btn btn-primary btn-block " ng-click="enteraffiliate()" ng-show="selectedaffiliate=='-1'">  Add affiliate link  </button>
+							<button type="button" class="btn btn-primary btn-block " ng-click="deleteaffiliate()" ng-show="selectedaffiliate!='-1'">  Delete Affiliate  </button>
+							<button type="button" class="btn btn-primary btn-block " ng-click="updateaffiliate()" ng-show="selectedaffiliate!='-1'">  Update Affiliate  </button>
+							<button type="button" class="btn btn-primary btn-block " ng-click="cancelselectaffiliate()" ng-show="selectedaffiliate!='-1'">  Cancel selection  </button>
+            </div>
+
+                                        
+		</div>
+
+		
+		
+		
+                            
+										
+                    
+						
+										
+								
+		</div>
+</div>
+		</br>
+</br>
+</br>
+</br>
+</br>

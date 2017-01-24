@@ -44,9 +44,22 @@ function UserrecordDAO(db) {
 			if( record != null) {
 			var query = {};
 			query['_id'] = record['_id'];
-			var record_already_exists = new Error("Record already exists");
+		//	var record_already_exists = new Error("Record already exists");
 			
-			return callback(record_already_exists, record);
+		//	return callback(record_already_exists, record);
+		
+			accountrecstore.update(query,{$set: data},  function (err, result) {
+            "use strict";
+
+            if (!err) {
+                console.log("record updated");
+                return callback(null, result);
+            }
+
+            if (err) return callback(err, null);
+			});
+		
+			
 			
 		  }
 		  else {

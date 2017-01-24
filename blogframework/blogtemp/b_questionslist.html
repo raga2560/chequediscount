@@ -1,0 +1,57 @@
+
+<div class='panel panel-primary' >
+		<div class="panel-heading">
+                            Questions list  <button type="button" class="btn " ng-click="listquestions()" >  Refresh  </button>
+                        </div>
+		<div class="panel-body">
+		<div class="form-group ">
+                               <simple-pagination
+      current-page="qasettings.currentPage"
+      page-limit="qasettings.pageLimit"
+      offset="qasettings.offset"
+      page-limits="qasettings.pageLimits"
+      on-update="qacallback()"
+      total="questionanswer.length">
+    </simple-pagination>
+	
+					
+					           </div>
+
+		<div class="row"  ng-repeat="qa in questionanswer | limitTo:qasettings.pageLimit:qasettings.offset"  > 
+							 <div class="col-lg-9" >
+							<div class="form-group">
+                                            <label>{{$index + 1}} )</label>                   {{qa.question.title}}                    
+                                        
+										<a ui-sref="questionsupdate({recordid:qa._id})" >  Edit question  </a>,
+										<!-- a ui-sref="questionanswersupdate({recordid:qa._id})" ng-click="displayupdatequestion(qa._id)" >  Edit answers  </a -->
+										<a ui-sref="questionanswersupdate({recordid:qa._id})"  >  Edit answers  </a>,
+										<a ui-sref="questiondisplay({recordid:qa._id})" >  Display question answers  </a>,
+										<a ng-click="deletequestion(qa._id)" ui-sref="questionslist" >  Delete  </a>
+										<a ng-click="publishquestion(qa._id)" ui-sref="questionslist" ng-show="qa.flag=='edit'">  Publish  </a>
+										<a ng-click="unpublishquestion(qa._id)" ui-sref="questionslist" ng-show="qa.flag=='published'">  UnPublish  </a>
+							</div>			
+										
+						</div>
+						<div class="col-lg-3" > <!--ng-bind-html="qa.question.description" -->
+						
+	
+						
+						</div>
+		</div>
+		
+										
+                    
+						
+										
+								
+					
+                    </div>
+					
+										</div>
+				  </div>
+		</div>
+		</br>
+</br>
+</br>
+</br>
+</br>

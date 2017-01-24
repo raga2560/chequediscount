@@ -1,0 +1,92 @@
+
+<div class='panel panel-primary' >
+		<div class="panel-heading">
+                            Question update <button type="button" class="btn " ng-click="displayupdatequestion()" >  Refresh  </button> 
+                        </div>
+		<div class="panel-body">
+		<div class="form-group has-error">
+                                     <label class="control-label" for="inputError" ng-show="questionanswerentry.error">{{questionanswerentry.error}} </label>
+					<label class="control-label" for="inputError" ng-show="questionanswerentry.reasonfor_notapproval" >{{questionanswerentry.reasonfor_notapproval}} </label>
+					           </div>
+
+		<div class="row">
+							 <div class="col-lg-6" >
+							<div class="form-group">
+                                            <label>Question title</label>
+                                            <input class="form-control"  placeholder="Enter project name" ng-model="questionanswerentry.question.title">
+                                        </div>
+										
+						</div>
+						<div class="col-lg-6" >
+						
+						</div>
+		</div>
+		<div class="row">
+						  <div class="panel-body">
+										<div class="form-group">
+						  <label>Question Description </label>
+							
+										<text-angular   placeholder="Enter Description" ng-model="questionanswerentry.question.description"></text-angular>
+						</div>
+						</div>
+						
+                                        
+		</div>
+		
+		
+                            <div class="row">
+										
+                                <div class="col-lg-6" >
+                                    <div class="form-group">
+                                            
+											
+											<label>Field</label>
+											<select multiple class="form-control" ng-model="questionanswerentry.field">
+                                                    <option ng-repeat="a1 in apptopics">{{a1}}</option>
+                                                
+                                            </select>
+                                        </div>
+										<div class="form-group">
+                                            
+											
+											<label>Technology</label>
+											<select  multiple class="form-control" ng-model="questionanswerentry.technology">
+											
+                                                <option ng-repeat="a1 in apptechnologies">{{a1}}</option>
+                                                
+                                            </select>
+                                        </div>
+										
+									        
+
+										
+										
+										
+										
+										
+										
+										
+						</div>				
+						<div class="col-lg-6">				
+										
+										
+										
+										
+										
+						</div>
+										
+                    
+						<button type="button" class="btn btn-primary btn-block " ng-click="updatequestion()" >  Update  </button>
+										
+								
+					
+                    </div>
+					
+										</div>
+				  </div>
+		</div>
+		</br>
+</br>
+</br>
+</br>
+</br>

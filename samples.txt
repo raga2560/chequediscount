@@ -1,0 +1,211 @@
+</ion-nav-buttons>
+
+        <ion-content >
+         <div class="bar bar-header item-input-inset">
+  <label class="item-input-wrapper">
+    <i class="icon ion-ios-search placeholder-icon"></i>
+    <input type="search" placeholder="Enter item to search"  ng-model="involvesearchstr">
+  </label>
+  <button class="button button-clear">
+    Cancel
+  </button>
+</div>
+{{test1}}
+
+
+<ion-list>
+  <ion-item ng-repeat="item in involveitems | filter:involvesearchstr |limitTo:20" href="#/app/listitems1/{{item.name}}">
+    <H3 > {{item.name}} </H3>
+	
+  </ion-item>
+</ion-list>
+
+
+return {
+    getPicture: function(options) {
+      var q = $q.defer();
+
+      $cordovaCamera.getPicture(function(result) {
+        // Do any magic you need
+        q.resolve(result);
+      }, function(err) {
+        q.reject(err);
+      }, options);
+
+      return q.promise;
+    }
+	
+	
+	
+	db.my_collection.update(
+ {_id : "document_id"},
+ {$set : {"my_array.1.content" : "New content B"}}
+ 
+ 
+ And now we would like to update the text of the element in the array ’array’ to “blah” where the value is 22:
+
+> db.foo.update({"array.value" : 22}, {"$set" : {"array.$.text" : "blah"}})
+
+> db.foo.find().pretty()
+
+{
+
+"_id" : ObjectId("4f9808648859c65d"),
+
+"array" : [
+
+{"text" : "foo", "value" : 11},
+
+{"text" : "foobar", "value" : 33},
+
+{"text" : "blah", "value" : 22}
+
+]
+
+}
+
+
+	C:\meanio\myapp31\packages\custom\ggexpress\server\controllers\objecttype.server.controller.js
+
+https://docs.mongodb.com/manual/reference/operator/query/regex/
+
+Implicit AND Conditions for the Field
+
+To include a regular expression in a comma-separated list of query conditions for the field, use the $regex operator. For example:
+
+{ name: { $regex: /acme.*corp/i, $nin: [ 'acmeblahcorp' ] } }
+{ name: { $regex: /acme.*corp/, $options: 'i', $nin: [ 'acmeblahcorp' ] } }
+{ name: { $regex: 'acme.*corp', $options: 'i', $nin: [ 'acmeblahcorp' ] } }
+
+
+
+	
+	objecttypesearch : function(req, res, next) {
+        "use strict";
+
+        var str = req.params.str;
+		var pattern  = "/" + str + "/" + "i";
+//		  console.log("Pattern " + pattern);
+		  
+
+		  Article.find({ 'item' : new RegExp(str) } , {'item':1, 'desc':1 }).exec(function(err, items) {
+            "use strict";
+
+            if (err) return res.json(null);
+
+//			console.log (items);
+//            console.log("Found " + items.length + " posts");
+
+			 return res.json(items);
+            
+        });
+		
+		
+        
+  },
+  
+  
+  C:\gitstorage\visualization\visualapp.js
+	
+	this.getorderby = function(what, callback) {
+        "use strict";
+		
+		var query;
+		var filter;
+		
+		if(what == "sales") {
+				query = [    {$group:      { 	 _id:"$Order ID", 	 num_products:{$sum:1}, sales: {$sum: "$Sales"}     }    }];
+				
+		} else if (what == "customersegment") {
+			query = [    {$group:      { 	 _id:"$Customer Segment", 	 num_products:{$sum:1}, sales: {$sum: "$Sales"}     }    }];
+		
+		} else if (what == "customername") {
+			query = [    {$group:      { 	 _id:"$Customer Name", 	 num_products:{$sum:1}, sales: {$sum: "$Sales"}     }    }];
+		}else if (what == "productcategory") {
+			query = [    {$group:      { 	 _id:"$Product Category", 	 num_products:{$sum:1}, sales: {$sum: "$Sales"}     }    }];
+		}
+		else if (what == "sales_permonth_percategory") {
+			
+			var Value_match = new RegExp('Value_2');
+			query = [  {
+       $project:
+         {
+			 month: { $substr: [ "$Order Date", 0, 2 ] },
+			 product_category : "$Product Category",
+			 sales: "$Sales" }} , {$group:      { 	 _id:{
+				 
+				 m:"$month",
+			     p:"$product_category"
+				 }, 	  sales: {$sum: "$sales"}     }    }];
+		}
+		else if (what == "sales_permonth_percategory_persubcategory") {
+			
+			var Value_match = new RegExp('Value_2');
+			query = [  {
+       $project:
+         {
+			 month: { $substr: [ "$Order Date", 0, 2 ] },
+			 product_category : "$Product Category",
+			 subcategory: "$Product Sub-Category",
+			 sales: "$Sales" }} , {$group:      { 	 _id:{
+				 
+				 m:"$month",
+			     p:"$product_category",
+				 s:"$subcategory"
+				 }, 	  sales: {$sum: "$sales"}     }    }];
+		}
+		else if (what == "profit_permonth_percategory") {
+			
+			var Value_match = new RegExp('Value_2');
+			query = [  {
+       $project:
+         {
+			 month: { $substr: [ "$Order Date", 0, 2 ] },
+			 product_category : "$Product Category",
+			 profit: "$Profit" }} , {$group:      { 	 _id:{
+				 
+				 m:"$month",
+			     p:"$product_category"
+				 }, 	  profit: {$sum: "$profit"}     }    }];
+		}
+		else if (what == "sales_permonth") {
+			
+			var Value_match = new RegExp('Value_2');
+			query = [  {
+       $project:
+         {
+			 month: { $substr: [ "$Order Date", 0, 2 ] },
+			 product_category : "$Product Category",
+			 sales: "$Sales" }} , {$group:      { 	 _id:{
+				 
+				 m:"$month"
+			     
+				 }, 	  sales: {$sum: "$sales"}     }    }];
+		}
+		else {
+			query = [    {$group:      { 	 _id:"$Order ID", 	 num_products:{$sum:1}, sales: {$sum: "$Sales"}     }    }];
+		}
+		
+
+			Visualapp.aggregate(query,function(err, object) {
+
+            "use strict";
+
+
+            if (err) return callback(err, null);
+
+
+             callback(null, object);
+        });
+		
+
+		posts.find({ tags : tag }).sort('date', -1).limit(num).toArray(function(err, items) {
+
+https://docs.mongodb.com/v3.2/text-search/
+db.stores.createIndex( { name: "text", description: "text" } )
+
+		
+		db.stores.find(
+   { $text: { $search: "java coffee shop" } },
+   { score: { $meta: "textScore" } }
+).sort( { score: { $meta: "textScore" } } )

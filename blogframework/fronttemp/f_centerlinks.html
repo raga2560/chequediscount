@@ -1,0 +1,155 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{technology}}
+
+    </div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{selectedpurpose}}
+                    </div>
+
+
+
+
+
+                    <div class="panel-body">
+
+
+
+
+                        <ul>
+						
+                            <li ng-repeat="qa in frontdata |limitTo: 10"> <a href="#/front/{{technology}}" ng-click="setanswer($index)">{{qa.question.title}}</a> </li>
+							
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+				<div class="panel panel-default">
+                    <div class="panel-heading">
+                        Details
+                    </div>
+
+
+
+
+
+                    <div class="panel-body" ng-bind-html="frontquestion">
+
+
+
+
+                        
+                    </div>
+                </div>
+				
+
+
+                <div class="panel panel-default" ng-show="frontlead.length>0">
+                    <div class="panel-heading">
+                        Forward
+                    </div>
+
+
+
+
+
+                    <div class="panel-body">
+
+
+
+
+                        <ul>
+						<li ng-repeat="qa in frontlead |limitTo: 7">  <p ng-bind-html="qa"> </p> </li>
+						
+                            
+
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-default" ng-show="frontaffiliate.length>0">
+                    <div class="panel-heading">
+                       Affiliates
+                    </div>
+
+
+
+
+
+                    <div class="panel-body">
+
+
+
+
+                        <ul>
+						<li ng-repeat="qa in frontaffiliate |limitTo: 7">  <p ng-bind-html="qa.affiliatelink"> {{qa.affiliatelink}}</p> </li>
+                            
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-6">
+
+
+                <div class="panel panel-default" ng-show="frontanswer.length>0">
+                    <div class="panel-heading">
+                        Question/Answers
+                    </div>
+
+
+
+		
+
+                    <div class="panel-body">
+        
+                        <div class="panel panel-default" ng-repeat="answer in frontanswer |limitTo: 4">
+                            <div class="panel-heading">
+                                <label>{{answer.title}}</label> 
+                            </div>
+
+                            <div class="panel-body">
+								<p ng-bind-html="answer.description"> </p>
+                            </div>
+
+                        </div>
+					</div>
+
+        
+
+
+
+
+                    
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+    </br>
+
+
+    
+</div>

@@ -1,54 +1,61 @@
-var  Chequesession = require('./chequesession')
+var    multiparty = require('connect-multiparty')
+      ,Questionanswer = require('./questionanswer')
+       , ErrorHandler = require('./error').errorHandler;
   
-  , ErrorHandler = require('./error').errorHandler;
+	multipartyMiddleware = multiparty(); 
 
-module.exports = exports = function(app, db) {
+	module.exports = exports = function(app, db) {
 
-    var chequesession = new Chequesession(db);
+    
+	var questionanswer = new Questionanswer(db);
 	
   
 
     // Middleware to see if a user is logged in
-    app.use(chequesession.isLoggedInMiddleware);
+    app.use(questionanswer.isLoggedInMiddleware);
 
     // The main page of the blog
     // Login form
   
 	//------------------------chequediscount top ----------------------------------//
 
-	app.post('/cheque/adminregister', chequesession.adminregister);
-	app.post('/cheque/handleLoginRequest', chequesession.handleLoginRequest);
-	app.post('/cheque/adminLogout', chequesession.adminLogout);
 	
-	app.post('/cheque/isLoggedIn', chequesession.isLoggedIn);
-	app.post('/cheque/getissuers', chequesession.getissuers);
-	app.post('/cheque/getreceivers', chequesession.getreceivers);
-	app.post('/cheque/getdiscounters', chequesession.getdiscounters);
-	app.post('/cheque/getusertransactions', chequesession.getusertransactions);
-	app.post('/cheque/gettransactions', chequesession.gettransactions);
-	app.post('/cheque/getactivetransactions', chequesession.getactivetransactions);
+	app.post('/questionanswer/enteranswer', questionanswer.enteranswer);
+	app.post('/questionanswer/updateanswer', questionanswer.updateanswer);
+	app.post('/questionanswer/updatelead', questionanswer.updatelead);
+	app.post('/questionanswer/updateaffilate', questionanswer.updateaffilate);
 	
-	app.get('/cheque/isLoggedIn', chequesession.isLoggedIn);
-	app.get('/cheque/getissuers', chequesession.getissuers);
-	app.get('/cheque/getdiscounters', chequesession.getdiscounters);
-	app.get('/cheque/getreceivers', chequesession.getreceivers);
-	app.get('/cheque/getusertransactions', chequesession.getusertransactions);
-	app.get('/cheque/gettransactions', chequesession.gettransactions);
-	app.get('/cheque/getactivetransactions', chequesession.getactivetransactions);
-
-	app.post('/cheque/createissuer', chequesession.createissuer);
-	app.post('/cheque/creatediscounter', chequesession.creatediscounter);
-	app.post('/cheque/createreceiver', chequesession.createreceiver);
+	app.post('/questionanswer/deleteanswer', questionanswer.deleteanswer);
+	app.post('/questionanswer/deletelead', questionanswer.deletelead);
+	app.post('/questionanswer/deleteaffiliate', questionanswer.deleteaffilate);
 	
-	app.post('/cheque/getratingofuser', chequesession.getratingofuser);
-	app.post('/cheque/chequedeposit', chequesession.chequedeposit);
-	app.post('/cheque/setmaxdiscount', chequesession.setmaxdiscount);
-	app.post('/cheque/setdiscount', chequesession.setdiscount);
-	app.post('/cheque/setissuerrating', chequesession.setissuerrating);
+	app.post('/questionanswer/setquestionedit', questionanswer.setquestionedit);
+	app.post('/questionanswer/setquestionpublished', questionanswer.setquestionpublished);
 	
-	app.post('/cheque/etherenterrecord', chequesession.etherenterrecord);
-	app.post('/cheque/ethergetrating', chequesession.ethergetrating);
-	app.post('/cheque/ethersetrating', chequesession.ethersetrating);
+	
+	
+	app.post('/questionanswer/enterquestionanswer', questionanswer.enterquestionanswer);
+	app.post('/questionanswer/enteraffiliate', questionanswer.enteraffiliate);
+	app.post('/questionanswer/enterlead', questionanswer.enterlead);
+	app.post('/questionanswer/getquestionanswer', questionanswer.getquestionanswer);
+	app.post('/questionanswer/deletequestionanswer', questionanswer.deletequestionanswer);
+	app.post('/questionanswer/listquestions', questionanswer.listquestions);
+	
+	app.post('/questionanswer/listsearchquestions', questionanswer.listsearchquestions);
+	app.post('/questionanswer/updatequestionanswer', questionanswer.updatequestionanswer);
+	
+	
+	
+	app.post('/questionanswer/adminregister', questionanswer.adminregister);
+	app.post('/questionanswer/handleLoginRequest', questionanswer.handleLoginRequest);
+	app.post('/questionanswer/adminLogout', questionanswer.adminLogout);
+	
+	app.post('/questionanswer/isLoggedIn', questionanswer.isLoggedIn);
+	
+	
+	app.post('/upload/document', multipartyMiddleware, questionanswer.document);
+	app.post('/download', questionanswer.download);
+	
 	
 
 

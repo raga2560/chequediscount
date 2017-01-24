@@ -8,8 +8,11 @@ var express = require('express')
  
  
  app.use('/images',express.static(__dirname + '/images'));
+ app.use('/dlview',express.static(__dirname + '/dlview'));
+ app.use('/dataf',express.static(__dirname + '/dataf'));
  app.use('/visualization',express.static(__dirname + '/angularjsapp'));
- app.use('/chequediscount',express.static(__dirname + '/chequediscount'));
+ app.use('/Blogexpert',express.static(__dirname + '/Blogexpert'));
+ app.use('/',express.static(__dirname + '/blogframework'));
  
  
  

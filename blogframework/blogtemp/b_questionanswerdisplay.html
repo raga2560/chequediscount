@@ -1,0 +1,56 @@
+
+<div class='panel panel-primary' >
+		<div class="panel-heading">
+                            Display Question Answers  <button type="button" class="btn " ng-click="displayupdatequestion()" >  Refresh  </button> 
+                        </div>
+		<div class="panel-body">
+		
+		<div class="row">
+							 <div class="col-lg-6" >
+							<div class="form-group">
+                                            <label>Question title</label>
+                                           {{currentqa.question.title}}
+                                        </div>
+										
+						</div>
+						<div class="col-lg-6" ng-bind-html="currentqa.question.description">
+						
+						</div>
+		</div>
+		Answers
+		
+		<div class="row" ng-repeat="ans in currentqa.answers">
+			
+		<label>{{ans.title}}</label> <p ng-bind-html="ans.description"> </p>
+		</div>
+		
+		
+		Leads				
+		<div class="row" ng-repeat="ans in currentqa.leads">
+			
+		<p> {{ans}}</p>
+		</div>
+		
+		
+		Affiliates
+		<div class="row" ng-repeat="ans1 in currentqa.affiliatelinks">
+			
+		<p>  {{ans1.affiliatename}}</p>
+		<p>  {{ans1.affiliatelink}}</p>
+		</div>
+		
+		
+		
+                            
+										
+                    
+						
+										
+								
+		</div>
+</div>
+		</br>
+</br>
+</br>
+</br>
+</br>
